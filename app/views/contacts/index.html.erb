@@ -1,0 +1,49 @@
+
+
+
+<form id="flash_message">
+<% flash.each do |key,value| %>
+  <p> <%= value %> </p>
+<% end %>
+</form>
+
+
+
+
+<header><h1 id="home">Welcome to Contacts</h1></header>
+<div id="main_frame">
+<table id="home">
+  <tr>
+    <th width="100px">이름</th>
+    <th width="50px">나이</th>
+    <th width="125px">생년월일</th>
+    <th width="150px">전화번호</th>
+    <th width="60px">직분</th>
+    <th width="85px">사역</th>
+    <th width="90px">목장</th>
+    <th width="90px">선교</th>
+    <th width="200px">이메일</th>
+    <th width="160px">주소</th>
+    <th width="100px">비고 1</th>
+    <th width="100px">비고 2</th>
+    <th width="100px">비고 3</th>
+  </tr>
+  <% @contacts.each do |f| %>
+  <tr>
+    <td><%=link_to f.name, f %></td>
+    <td><%=Time.now.year - f.birthday.strftime("%Y").to_i%></td>
+    <td><%=f.birthday.year%>년 <%=f.birthday.month%>월 <%=f.birthday.day%>일</td>
+    <td><%=number_to_phone(f.phone.to_i, area_code:true)%></td>
+    <td><%=f.position%></td>
+    <td><%=f.sa_yeok%></td>
+    <td><%=f.mok_jang%></td>
+    <td><%=f.sun_kyo%></td>
+    <td><%=f.email%></td>
+    <td><%=f.address_building%></td>
+    <td><%=f.other_1%></td>
+    <td><%=f.other_2%></td>
+    <td><%=f.other_3%></td>
+  </tr>
+  <% end %>
+</table>
+</div>

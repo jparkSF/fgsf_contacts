@@ -1,0 +1,95 @@
+
+
+
+
+
+<div class="wrapper style1 first">
+  <article class="container" id="top">
+    <div class="row">
+      <div class="4u">
+        <span class="image fit"><%=image_tag "pic00.jpg"%></span>
+      </div>
+      <div class="8u">
+        <header>
+          <h1>Hi. My name is <strong><%= @contact.name %></strong>.</h1>
+        </header>
+        <p>
+          <table>
+            <tr>
+              <td id="show_key">이름: </td>
+              <td id="show_value"><%= @contact.name %></td>
+            </tr>
+            <tr>
+              <td id="show_key">나이: </td>
+              <td id="show_value"><%=Time.now.year - @contact.birthday.year.to_i %>세</td>
+            </tr>
+            <tr>
+              <td id="show_key">생년월일: </td>
+              <td id="show_value"><%= @contact.birthday.year %>년 <%= @contact.birthday.month %>월 <%= @contact.birthday.day %>일</td>
+            </tr>
+            <tr>
+              <td id="show_key">전화번호: </td>
+              <td id="show_value"><%= number_to_phone(@contact.phone.to_i,area_code:true) %></td>
+            </tr>
+            <tr>
+              <td id="show_key">직분: </td>
+              <td id="show_value"><%= @contact.position %></td>
+            </tr>
+            <tr>
+              <td id="show_key">사역: </td>
+              <td id="show_value"><%= @contact.sa_yeok %></td>
+            </tr>
+            <tr>
+              <td id="show_key">목장: </td>
+              <td id="show_value"><%= @contact.mok_jang %></td>
+            </tr>
+            <tr>
+              <td id="show_key">선교: </td>
+              <td id="show_value"><%= @contact.sun_kyo %></td>
+            </tr>
+            <tr>
+              <td id="show_key">이메일: </td>
+              <td id="show_value"><%= @contact.email %></td>
+            </tr>
+            <tr>
+              <td id="show_key">주소: </td>
+              <td id="show_value"><%= @contact.address_building %></td>
+            </tr>
+            <tr>
+              <td id="show_key"></td>
+              <td id="show_value"><%= @contact.address_city.split.map(&:capitalize).join(' ') %></td>
+            </tr>
+            <tr>
+              <td id="show_key"> </td>
+              <td id="show_value"><%= @contact.address_state %></td>
+            </tr>
+            <tr>
+              <td id="show_key"> </td>
+              <td id="show_value"><%= @contact.address_zip %></td>
+            </tr>
+            <tr>
+              <td id="show_key">비고 1: </td>
+              <td id="show_value"><%= @contact.other_1 %></td>
+            </tr>
+            <tr>
+              <td id="show_key">비고 2: </td>
+              <td id="show_value"><%= @contact.other_2 %></td>
+            </tr>
+            <tr>
+              <td id="show_key">비고 3: </td>
+              <td id="show_value"><%= @contact.other_3 %></td>
+            </tr>
+          </table>
+
+
+        </p>
+
+        <%= link_to 'Back', contacts_path, {:class => "button big scrolly",:id => "show_button"} %>
+        <%= link_to 'Edit', edit_contact_path, {:class => "button big scrolly",:id => "show_button"} %>
+        <%= link_to 'Delete', @contact,:method => :delete, %>
+
+
+      </div>
+    </div>
+  </article>
+</div>
