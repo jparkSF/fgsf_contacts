@@ -1,0 +1,14 @@
+
+<div id="search">
+
+<header id="search-heading"><h1>Search?</h1></header>
+
+
+<%= form_tag(contacts_path, :method => "get", id: "search-input") do %>
+<%= text_field_tag :search,params[:search], placeholder: "키워드를 입력하세요..." %>
+<%= submit_tag "검색", :id => "submit" %>
+
+
+<% end %>
+
+</div>

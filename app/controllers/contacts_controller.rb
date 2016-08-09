@@ -1,9 +1,15 @@
 class ContactsController < ApplicationController
   def index
     @contacts = Contact.all
+    if params[:search]
+        @contacts = Contact.search(params[:search]).order("created_at DESC")
+      else
+        @contacts = Contact.all.order('created_at DESC')
+      end
 
 
   end
+
   def show
     @contact = Contact.find(params[:id])
 
@@ -12,16 +18,25 @@ class ContactsController < ApplicationController
 
   end
 
-  def age(birthday_year)
+  def search
+    @contacts = Contact.all
+    if params[:search]
+        @contacts = Contact.search(params[:search]).order("created_at DESC")
+      else
+        @contacts = Contact.all.order('created_at DESC')
+      end
 
   end
 
+
   def new
     @contact = Contact.new
+    
   end
 
   def create
     @contact = Contact.new(user_params)
+
 
       if @contact.name.length < 1
         redirect_to new_contact_path, :notice => "Please fill in the information!"
@@ -30,6 +45,8 @@ class ContactsController < ApplicationController
       else
         render "new"
       end
+
+
 
   end
 

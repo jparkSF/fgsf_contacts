@@ -16,15 +16,18 @@
 </head>
 <body>
   <nav id="nav">
-    <ul class="container">
-      <li><a href="/">Home</a></li>
-      <li><a href="/contacts/new/">New</a></li>
-      <li><a href="#Search">Search</a></li>
-      <li><a href="#Support">Support</a></li>
+    <ul class="">
+      <a href="/contacts/"><i id="font-awesome" class="fa fa-home" aria-hidden="true"></i></a>
+      <a href="/contacts/search"><i id="font-awesome" class="fa fa-search" aria-hidden="true"></i></a>
+      <a href="/contacts/new"><i id="font-awesome" class="fa fa-plus" aria-hidden="true"></i></a>
     </ul>
   </nav>
 
-
+  <form id="flash_message">
+  <% flash.each do |key,value| %>
+    <p> <%= value %> </p>
+  <% end %>
+  </form>
 
 
 <%= yield %>

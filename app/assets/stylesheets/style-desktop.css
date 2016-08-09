@@ -16,7 +16,7 @@
 
 	h1#home{
 		text-align: center;
-		font-size: 3em;
+		font-size: 2.25em;
 
 	}
 	h1
@@ -73,10 +73,11 @@
 
 			form .button
 			{
-				margin: 0 0.5em 0 0.5em;
+			/*	margin: 0 0.5em 0 0.5em; */
 			}
 
 	/* Button */
+
 
 		input[type="button"],
 		input[type="submit"],
@@ -92,7 +93,7 @@
 			input[type="reset"].big,
 			.button.big
 			{
-				font-size: 1.5em;
+				font-size: 1em;
 				letter-spacing: -0.025em;
 			}
 
@@ -186,7 +187,7 @@
 	#top
 	{
 		text-align: left;
-		margin-top:50px;
+
 	}
 
 		#top .image

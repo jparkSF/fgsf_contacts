@@ -3,7 +3,7 @@
 
 
 
-<div class="wrapper style1 first">
+<div class="wrapper style1 first" style="padding-top:0">
   <article class="container" id="top">
     <div class="row">
       <div class="4u">
@@ -32,6 +32,18 @@
               <td id="show_value"><%= number_to_phone(@contact.phone.to_i,area_code:true) %></td>
             </tr>
             <tr>
+              <td id="show_key">이메일: </td>
+              <td id="show_value"><%= @contact.email %></td>
+            </tr>
+            <tr>
+              <td id="show_key">주소: </td>
+              <td id="show_value"><%= @contact.address_building %></td>
+            </tr>
+            <tr>
+              <td id="show_key"></td>
+              <td id="show_value"><%= @contact.address_city.split.map(&:capitalize).join(' ')%>, <%= @contact.address_state %> <%= @contact.address_zip %></td>
+            </tr>
+            <tr>
               <td id="show_key">직분: </td>
               <td id="show_value"><%= @contact.position %></td>
             </tr>
@@ -46,26 +58,6 @@
             <tr>
               <td id="show_key">선교: </td>
               <td id="show_value"><%= @contact.sun_kyo %></td>
-            </tr>
-            <tr>
-              <td id="show_key">이메일: </td>
-              <td id="show_value"><%= @contact.email %></td>
-            </tr>
-            <tr>
-              <td id="show_key">주소: </td>
-              <td id="show_value"><%= @contact.address_building %></td>
-            </tr>
-            <tr>
-              <td id="show_key"></td>
-              <td id="show_value"><%= @contact.address_city.split.map(&:capitalize).join(' ') %></td>
-            </tr>
-            <tr>
-              <td id="show_key"> </td>
-              <td id="show_value"><%= @contact.address_state %></td>
-            </tr>
-            <tr>
-              <td id="show_key"> </td>
-              <td id="show_value"><%= @contact.address_zip %></td>
             </tr>
             <tr>
               <td id="show_key">비고 1: </td>
@@ -86,7 +78,8 @@
 
         <%= link_to 'Back', contacts_path, {:class => "button big scrolly",:id => "show_button"} %>
         <%= link_to 'Edit', edit_contact_path, {:class => "button big scrolly",:id => "show_button"} %>
-        <%= link_to 'Delete', @contact,:method => :delete, %>
+        <%= link_to 'Delete', @contact, {:class=>"button big scrolly",:id=>"show_button",:method => :delete, data:{:confirm =>"Are you sure?"} }%>
+
 
 
       </div>
