@@ -70,14 +70,10 @@
    <%= f.text_field :other_3 %><br />
 </p>
 
-<p>
-<%= f.submit "Update" %>
-</p>
-
-
-<% end %>
-<p>
-<%= link_to 'Cancel', contacts_path, {:class => "button scrolly",:id => "show_button create_new_form"} %>
+<p id="button">
+  <%= f.submit 'Create' ,{:class => "button scrolly",:id => "show_button create_new_form"} %>
+  <%= link_to 'Cancel', contacts_path, {:class => "button scrolly",:id => "show_button create_new_form"} %>
+  <% end %>
 </p>
 
 </div>

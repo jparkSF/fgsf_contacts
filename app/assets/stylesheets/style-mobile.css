@@ -1,8 +1,4 @@
-/*
-	Miniport by Pixelarity
-	pixelarity.com @pixelarity
-	License: pixelarity.com/license
-*/
+
 
 /*********************************************************************************/
 /* Basic                                                                         */
@@ -34,6 +30,8 @@
 	header
 	{
 		margin: 0 0 2em 0;
+		width: 100%;
+    position: absolute;
 	}
 
 		header > p

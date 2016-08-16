@@ -1,5 +1,9 @@
 == README
 
+예수인교회 교인주소록 Project Using Ruby on Rails
+
+
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 

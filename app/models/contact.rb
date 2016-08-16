@@ -21,9 +21,8 @@ class Contact < ActiveRecord::Base
    write_attribute(:phone, phone.gsub(/\D/, ''))
    end
 
-
-  def self.search(search)
-    Contact.where("name LIKE ? OR
+   def self.search(search)
+Contact.where("name LIKE ? OR
                     position LIKE ? OR
                     mok_jang LIKE ? OR
                     sa_yeok LIKE ? OR
@@ -40,6 +39,7 @@ class Contact < ActiveRecord::Base
                     other_3 LIKE ?", "%#{search}%","%#{search}%","%#{search}%","%#{search}%","%#{search}%","%#{search}%",
                     "%#{search}%","%#{search}%","%#{search}%","%#{search}%","%#{search}%","%#{search}%","%#{search}%","%#{search}%",
                     "%#{search}%")
+
 
     end
 end

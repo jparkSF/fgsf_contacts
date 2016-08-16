@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'contacts/search'
 
-  resources :contacts
+resources :contacts
 
   get 'contacts/index'
 

@@ -3,18 +3,17 @@
 
 
 
-<div class="wrapper style1 first" style="padding-top:0">
-  <article class="container" id="top">
-    <div class="row">
-      <div class="4u">
-        <span class="image fit"><%=image_tag "pic00.jpg"%></span>
+
+<div id="show-body">
+    <div  id="show">
+      <div id="show-image">
+        <span id="image"><%=image_tag "pic00.jpg"%></span>
       </div>
-      <div class="8u">
-        <header>
-          <h1>Hi. My name is <strong><%= @contact.name %></strong>.</h1>
+      <div id="show-content">
+        <header id="show-header" >
+          <h1>Hi. My name is <strong><%= @contact.name.split.map(&:capitalize).join(' ') %></strong>.</h1>
         </header>
-        <p>
-          <table>
+        <table id="show-table">
             <tr>
               <td id="show_key">이름: </td>
               <td id="show_value"><%= @contact.name %></td>
@@ -73,16 +72,20 @@
             </tr>
           </table>
 
+</div>
 
-        </p>
-
-        <%= link_to 'Back', contacts_path, {:class => "button big scrolly",:id => "show_button"} %>
-        <%= link_to 'Edit', edit_contact_path, {:class => "button big scrolly",:id => "show_button"} %>
-        <%= link_to 'Delete', @contact, {:class=>"button big scrolly",:id=>"show_button",:method => :delete, data:{:confirm =>"Are you sure?"} }%>
-
-
+      </div>
+      <div id="show-button">
+        <div id="show-back">
+          <%= link_to 'Back', contacts_path, {:class => "button big scrolly",:id => "show_button"} %>
+        </div>
+        <div id="show-edit">
+          <%= link_to 'Edit', edit_contact_path, {:class => "button big scrolly",:id => "show_button"} %>
+        </div>
+        <div id="show-delete">
+          <%= link_to 'Delete', @contact, {:class=>"button big scrolly",:id=>"show_button",:method => :delete, data:{:confirm =>"Are you sure?"} }%>
+        </div>
 
       </div>
     </div>
-  </article>
-</div>
+  </div>

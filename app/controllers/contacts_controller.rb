@@ -31,7 +31,7 @@ class ContactsController < ApplicationController
 
   def new
     @contact = Contact.new
-    
+
   end
 
   def create
@@ -40,11 +40,17 @@ class ContactsController < ApplicationController
 
       if @contact.name.length < 1
         redirect_to new_contact_path, :notice => "Please fill in the information!"
+      elsif Contact.exists?(@contact)
+          puts "!!!!!!!!!!!!!!!!!"
       elsif @contact.save
         redirect_to contacts_path, :notice => "Successfully Created!"
       else
         render "new"
       end
+
+
+
+
 
 
 
