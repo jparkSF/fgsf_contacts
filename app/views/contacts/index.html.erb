@@ -17,7 +17,7 @@
 
 <table id="home">
   <tr>
-    <th id="name"width="80px">이름</th>
+    <th id="name"width="120px">이름</th>
     <th id="age"width="50px">나이</th>
     <th id="birthday"width="125px">생일</th>
     <th id="phone"width="150px">전화번호</th>
@@ -35,7 +35,7 @@
   <tr>
     <td id="name"><%=link_to f.name.split.map(&:capitalize).join(' '), f %></td>
     <td id="age"><%=Time.now.year - f.birthday.strftime("%Y").to_i%></td>
-    <td id="birthday"><%=f.birthday.year%>년 <%=f.birthday.month%>월 <%=f.birthday.day%>일</td>
+    <td id="birthday"><%=f.birthday.strftime("%Y")%>-<%=f.birthday.strftime("%m")%>-<%=f.birthday.strftime("%d")%></td>
     <td id="phone"><%=number_to_phone(f.phone.to_i, area_code:true)%></td>
     <td id="position"><%=f.position%></td>
     <td id="sa_yeok"><%=f.sa_yeok%></td>

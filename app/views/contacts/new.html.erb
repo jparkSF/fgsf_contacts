@@ -3,8 +3,7 @@
 
 <header><h1 id="home">Create new contacts</h1></header>
 <div id="create_new_form">
-<%=  form_for  @contact do |f| %>
-
+<%=  form_for  @contact, html: {multipart: true} do |f| %>
 
 <p>
     이름:
@@ -70,6 +69,14 @@
 <p>
    비고 3:
    <%= f.text_field :other_3 %><br />
+</p>
+
+<p>
+      사진:
+
+
+      <%= f.file_field :image%><br />
+  
 </p>
 
 <p id="button">

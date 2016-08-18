@@ -4,7 +4,10 @@
 <div id="create_new_form">
 <%=  form_for  @contact do |f| %>
 
-
+<p>
+    Image:
+    <%= f.file_field :image %><br />
+</p>
 <p>
     이름:
     <%= f.text_field :name %><br />

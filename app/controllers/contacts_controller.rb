@@ -54,6 +54,8 @@ class ContactsController < ApplicationController
 
 
 
+
+
   end
 
   def edit
@@ -81,6 +83,6 @@ class ContactsController < ApplicationController
 
   private
   def user_params
-    params.require(:contact).permit(:name,:birthday,:phone,:position,:sa_yeok,:mok_jang,:sun_kyo,:email,:address_building,:address_city,:address_zip,:address_state,:other_1,:other_2,:other_3)
+    params.require(:contact).permit(:name,:birthday,:phone,:position,:sa_yeok,:mok_jang,:sun_kyo,:email,:address_building,:address_city,:address_zip,:address_state,:other_1,:other_2,:other_3,:image)
   end
 end

@@ -1,6 +1,12 @@
 class Contact < ActiveRecord::Base
 
     before_save :downcase_fields
+    has_attached_file :image, styles: { large: "600x600#", medium: "300x300#", thumb: "150x150#" },
+                :default_url => "/assets/:style/default_image.jpg"
+    validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
+
+    
+
 
 
   #  validates :name, :phone, :presence => true
