@@ -1,13 +1,10 @@
 
-<br /><br /><br /><br /><br />
+
 <header><h1 id="home">Edit contacts</h1></header>
 <div id="create_new_form">
 <%=  form_for  @contact do |f| %>
 
-<p>
-    Image:
-    <%= f.file_field :image %><br />
-</p>
+
 <p>
     이름:
     <%= f.text_field :name %><br />
@@ -73,6 +70,10 @@
    <%= f.text_field :other_3 %><br />
 </p>
 
+<p>
+    사진:<br /><br />
+    <%= f.file_field :image %><br />
+</p>
 <p id="button">
   <%= f.submit 'Create' ,{:class => "button scrolly",:id => "show_button create_new_form"} %>
   <%= link_to 'Cancel', contacts_path, {:class => "button scrolly",:id => "show_button create_new_form"} %>
