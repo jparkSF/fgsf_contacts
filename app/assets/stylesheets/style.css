@@ -239,6 +239,7 @@ width: 49%;
 	div#message{
 		margin-top:5px;
 		margin-bottom:8px;
+		margin-left:50px;
 	}
 
 
@@ -502,7 +503,7 @@ width: 49%;
 			width: 95%;
 			margin:auto;
 	    position: initial;
-			margin-top:140px;
+			margin-top:150px;
 		}
 
 			table.default
