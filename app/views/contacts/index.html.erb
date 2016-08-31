@@ -20,16 +20,17 @@
     <th id="name"width="120px">이름</th>
     <th id="age"width="50px">나이</th>
     <th id="birthday"width="125px">생일</th>
-    <th id="phone"width="150px">전화번호</th>
+    <th id="phone"width="120px">전화번호</th>
     <th id="position"width="60px">직분</th>
     <th id="sa_yeok"width="85px">사역</th>
     <th id="mok_jang"width="90px">목장</th>
     <th id="sun_kyo"width="90px">선교</th>
     <th id="email"width="200px">이메일</th>
-    <th id="address"width="160px">주소</th>
+    <!-- <th id="address"width="160px">주소</th> -->
     <th id="other_1"width="100px">비고 1</th>
-    <th id="other_2"width="100px">비고 2</th>
-    <th id="other_3"width="100px">비고 3</th>
+    
+<th id="other_2"width="100px">비고 2</th>
+   <!-- <th id="other_3"width="100px">비고 3</th>-->
   </tr>
   <% @contacts.each do |f| %>
   <tr>
@@ -42,10 +43,10 @@
     <td id="mok_jang"><%=f.mok_jang%></td>
     <td id="sun_kyo"><%=f.sun_kyo%></td>
     <td id="email"><%=f.email%></td>
-    <td id="address"><%=f.address_building%></td>
+<!--    <td id="address"><%=f.address_building%>, <%=f.address_city%>, <%=f.address_state%></td> -->
     <td id="other_1"><%=f.other_1%></td>
-    <td id="other_2"><%=f.other_2%></td>
-    <td id="other_3"><%=f.other_3%></td>
+  <td id="other_2"><%=f.other_2%></td>
+<!--    <td id="other_3"><%=f.other_3%></td> -->
   </tr>
   <% end %>
 </table>
