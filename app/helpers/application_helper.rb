@@ -73,5 +73,4 @@ module ApplicationHelper
       ['WY', 'WY']
     ]
   end
-
 end

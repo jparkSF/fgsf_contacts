@@ -1,0 +1,56 @@
+<table border="1">
+      <tr>
+        <th>ID</th>
+        <th>이름</th>
+        <th>나이</th>
+        <th>생일</th>
+        <th>전화번호</th>
+        <th>직분</th>
+        <th>사역</th>
+        <th>목장</th>
+        <th>선교회</th>
+        <th>이메일</th>
+        <th>주소</th>
+        <th>도시</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Zip</th>
+        <th>도시</th>
+        <th>비고 1</th>
+        <th>비고 2</th>
+        <th>비고 3</th>
+        <th>created_at</th>
+        <th>updated_at</th>
+        <th>image_file_name</th>
+        <th>image_content_type</th>
+        <th>image_file_size</th>
+        <th>image_updated_at</th>
+      </tr>
+    <%= @contacts.each do |f| %>
+      <tr>
+        <td><%= f.id %></td>
+        <td><%= f.name %></td>
+        <td><%=Time.now.year - f.birthday.strftime("%Y").to_i %></td>
+        <td><%=f.birthday.strftime("%Y")%>-<%=f.birthday.strftime("%m")%>-<%=f.birthday.strftime("%d")%></td>
+        <td><%= number_to_phone(f.phone.to_i, area_code:true)%></td>
+        <td><%=f.position%></td>
+        <td><%=f.sa_yeok%></td>
+        <td><%=f.mok_jang%></td>
+        <td><%=f.sun_kyo%></td>
+        <td><%=f.email%></td>
+        <td><%=f.address_building%></td>
+        <td><%=f.address_city%></td>
+        <td><%=f.address_state%></td>
+        <td><%=f.address_zip%></td>
+        <td><%=f.other_1%></td>
+        <td><%=f.other_2%></td>
+        <td><%=f.other_3%></td>
+        <td><%=f.created_at%></td>
+        <td><%=f.updated_at%></td>
+        <td><%=f.image_file_name%></td>
+        <td><%=f.image_content_type%></td>
+        <td><%=f.image_file_size%></td>
+        <td><%=f.image_updated_at%></th>
+      </tr>
+    <% end %>
+  </table>

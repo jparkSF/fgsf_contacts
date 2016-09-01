@@ -5,7 +5,14 @@ class Contact < ActiveRecord::Base
                 :default_url => "/assets/:style/default_image.jpg"
     validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
-    
+    def self.to_csv(options = {})
+      CSV.generate(options) do |csv|
+        csv << column_names
+        all.each do |contact|
+            csv << contact.attributes.values_at(*column_names)
+        end
+      end
+    end
 
 
 

@@ -6,9 +6,22 @@ class ContactsController < ApplicationController
       else
         @contacts = Contact.all.order('created_at DESC')
       end
+    end
+
+    respond_to do |format|
+        format.html
+        format.csv { send_data @contacts.to_csv }
+        format.xls #{ send_data @contacts.to_csv(col_sep: "\t") }
+    end
 
 
+  def download
+    @contacts = Contact.all
+    respond_to do |format|
+       format.xlsx {render xlsx: 'download',filename: "contacts.xlsx"}
+    end
   end
+
 
   def show
     @contact = Contact.find(params[:id])

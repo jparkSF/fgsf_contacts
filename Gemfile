@@ -24,6 +24,9 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'activeresource', require: 'active_resource'
+gem 'responders', '~> 2.0'
+gem 'axlsx', '~> 2.0'
+gem "axlsx_rails"
 
 
 # Use ActiveModel has_secure_password

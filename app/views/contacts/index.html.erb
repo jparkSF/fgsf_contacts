@@ -1,5 +1,13 @@
 <header><h1 id="home">Welcome to Contacts!!</h1></header>
 <div id="main_frame">
+
+    <p id="download">
+    <i style="font-size:1.4em;" class="fa fa-download" aria-hidden="true">&nbsp;</i>  
+    <%= link_to ".xls", contacts_path(format: "xls") %> |
+    <%= link_to '.xlsx (Recommended)', contacts_path(format: :xlsx) %>
+    </p>
+
+
   <div id="search-home">
     <%= form_tag(contacts_path, :method => "get", id: "search-input-home") do %>
     <%= text_field_tag :search,params[:search], placeholder: "키워드를 입력하세요..." %>
@@ -21,32 +29,45 @@
     <th id="age"width="50px">나이</th>
     <th id="birthday"width="125px">생일</th>
     <th id="phone"width="120px">전화번호</th>
-    <th id="position"width="60px">직분</th>
-    <th id="sa_yeok"width="85px">사역</th>
-    <th id="mok_jang"width="90px">목장</th>
-    <th id="sun_kyo"width="90px">선교</th>
-    <th id="email"width="200px">이메일</th>
-    <!-- <th id="address"width="160px">주소</th> -->
-    <th id="other_1"width="100px">비고 1</th>
-    
-<th id="other_2"width="100px">비고 2</th>
-   <!-- <th id="other_3"width="100px">비고 3</th>-->
+    <th id="position"width="75px">직분</th>
+    <th id="sa_yeok"width="95px">사역</th>
+    <th id="mok_jang"width="100px">목장</th>
+    <th id="sun_kyo"width="100px">선교</th>
+    <th id="email"width="130px">이메일</th>
+    <th id="address"width="">주소</th>
+    <!--<th id="other_1"width="100px">비고 1</th>
+    <th id="other_2"width="100px">비고 2</th>
+    <th id="other_3"width="100px">비고 3</th>-->
   </tr>
   <% @contacts.each do |f| %>
   <tr>
     <td id="name"><%=link_to f.name.split.map(&:capitalize).join(' '), f %></td>
     <td id="age"><%=Time.now.year - f.birthday.strftime("%Y").to_i%></td>
     <td id="birthday"><%=f.birthday.strftime("%Y")%>-<%=f.birthday.strftime("%m")%>-<%=f.birthday.strftime("%d")%></td>
-    <td id="phone"><%=number_to_phone(f.phone.to_i, area_code:true)%></td>
+    <td id="phone">
+      <% unless f.phone.empty? %>
+          <%= link_to number_to_phone(f.phone.to_i, area_code:true), "tel:#{f.phone.to_i}"%></td>
+      <% end %>
     <td id="position"><%=f.position%></td>
     <td id="sa_yeok"><%=f.sa_yeok%></td>
     <td id="mok_jang"><%=f.mok_jang%></td>
     <td id="sun_kyo"><%=f.sun_kyo%></td>
-    <td id="email"><%=f.email%></td>
-<!--    <td id="address"><%=f.address_building%>, <%=f.address_city%>, <%=f.address_state%></td> -->
-    <td id="other_1"><%=f.other_1%></td>
+    <!-- <td id="email"><%=f.email%></td>-->
+    <td id="email"><%=mail_to "#{f.email}"%></td>
+    <!-- <td id="address"><%=f.address_building%>, <%=f.address_city%>, <%=f.address_state%></td> -->
+    <td id="address">
+      <% unless f.address_building.empty? %>
+        <%= link_to("http://maps.google.com/?q=#{f.address_building},#{f.address_city}, #{f.address_state} #{f.address_zip}",:target => "_blank") do %>
+        <%= f.address_building.split.map(&:capitalize).join(' ')%>, <%=f.address_city.split.map(&:capitalize).join(' ') %>, <%= f.address_state %> <%= f.address_zip %>
+        <% end %>
+      <% end %>
+    </td>
+  </tr>
+
+
+    <!--<td id="other_1"><%=f.other_1%></td>
   <td id="other_2"><%=f.other_2%></td>
-<!--    <td id="other_3"><%=f.other_3%></td> -->
+<td id="other_3"><%=f.other_3%></td> -->
   </tr>
   <% end %>
 </table>

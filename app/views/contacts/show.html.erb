@@ -9,7 +9,15 @@
 
       <div id="show-image">
         <span id="image"><%=image_tag @contact.image.url(:medium)%></span>
-      </div>
+
+<!--
+      <div style="overflow:hidden;width:250px;height:250px;resize:none;margin-top:50px;">
+
+          <iframe  style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=<%=@contact.address_building%>+<%=@contact.address_city%>+<%=@contact.address_state%>+<%=@contact.address_zip%>&key=AIzaSyAQ_zaF9ViTb89Dt_vfyE77zVnqRToz9Ek"></iframe>
+
+
+      </div>-->
+    </div>
 
       <div id="show-content">
         <header id="show-header" >
@@ -30,19 +38,28 @@
             </tr>
             <tr>
               <td id="show_key">전화번호: </td>
-              <td id="show_value"><%= number_to_phone(@contact.phone.to_i,area_code:true) %></td>
+              <td id="show_value">
+                <% unless @contact.phone.empty? %>
+                    <%= link_to number_to_phone(@contact.phone.to_i, area_code:true), "tel:#{@contact.phone.to_i}"%>
+                <% end %>
+              </td>
             </tr>
             <tr>
               <td id="show_key">이메일: </td>
-              <td id="show_value"><%= @contact.email %></td>
+            <td id="show_value"><%= mail_to "#{@contact.email}" %></td>
+
             </tr>
             <tr>
               <td id="show_key">주소: </td>
-              <td id="show_value"><%= @contact.address_building %></td>
-            </tr>
-            <tr>
-              <td id="show_key"></td>
-              <td id="show_value"><%= @contact.address_city.split.map(&:capitalize).join(' ')%>, <%= @contact.address_state %> <%= @contact.address_zip %></td>
+              <td id="show_value" style="height:60px;">
+                <% unless @contact.address_building.empty? %>
+                  <%= link_to("http://maps.google.com/?q=#{@contact.address_building},#{@contact.address_city}, #{@contact.address_state} #{@contact.address_zip}",:target => "_blank") do %>
+                  <%= @contact.address_building.split.map(&:capitalize).join(' ') %>
+                  <br />
+                  <%= @contact.address_city.split.map(&:capitalize).join(' ') %>, <%= @contact.address_state %> <%= @contact.address_zip %>
+                  <% end %>
+                <% end %>
+              </td>
             </tr>
             <tr>
               <td id="show_key">직분: </td>

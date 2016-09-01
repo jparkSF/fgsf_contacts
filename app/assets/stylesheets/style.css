@@ -9,32 +9,34 @@
 /* Custom                                                                        */
 /*********************************************************************************/
 
+p#download{
+	margin-left:50px;
+	margin-top:50px;
+}
+
+
+
+/* Embedded Google Map */
+
 /* contacts/new, contacts/edit image_tag styling*/
+
+
+
 
 
 /* contacts/show */
 
 div#show-body{
 		width: 100%;
-
-
  		justify-content: center;
 		position: absolute;
 		margin: auto;
-
-
 }
 div#show{
-margin: auto;
-display: flex;
-justify-content: center;
-top: 0;
-
-
-
-
-
-
+		margin: auto;
+		display: flex;
+		justify-content: center;
+		top: 0;
 }
 
 div#show-content{
@@ -47,7 +49,7 @@ div#show-button{
 	display: flex;
 	justify-content: center;
 	bottom: 0;
-	margin-top: 50px;
+	/*margin-top: 50px; */
 
 }
 div#show-back, #show-edit, #show-delete{
@@ -79,11 +81,6 @@ img{
 	width: 250px;
 }
 
-
-
-
-
-
 /* application */
 
 	form#flash_message{
@@ -112,7 +109,7 @@ width: 49%;
 	form#search-input-home{
 		width:500px;
 		display: flex;
-		padding-top:70px;
+		padding-top:10px;
 
 	}
 
@@ -504,6 +501,7 @@ width: 49%;
 			margin:auto;
 	    position: initial;
 			margin-top:150px;
+			margin-bottom: 50px;
 		}
 
 			table.default
