@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   get 'contacts/search'
+  get 'contacts/database'
 
-resources :contacts
+  resources :contacts do
+    collection { post :import }
+  end
 
   get 'contacts/index'
 
@@ -12,6 +15,8 @@ resources :contacts
   get 'contacts/show'
 
   get 'contacts/delete'
+
+
 
 
 

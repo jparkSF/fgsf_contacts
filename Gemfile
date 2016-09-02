@@ -27,6 +27,8 @@ gem 'activeresource', require: 'active_resource'
 gem 'responders', '~> 2.0'
 gem 'axlsx', '~> 2.0'
 gem "axlsx_rails"
+gem 'roo'
+gem "iconv", "~> 1.0.3"
 
 
 # Use ActiveModel has_secure_password

@@ -10,10 +10,22 @@
 /*********************************************************************************/
 
 p#download{
-	margin-left:50px;
-	margin-top:50px;
+	margin-top:100px;
+	margin-bottom:50px;
+	margin-left:35%;
+	margin-right:35%;
+	width:30%;
+	text-align: center;
+	font-size:1.5em;
+
 }
 
+ input#database_import{
+	 margin-top:50px;
+	 width: 300px;
+	 font-size: 1.2em;
+	 display: block;
+ }
 
 
 /* Embedded Google Map */
@@ -307,7 +319,7 @@ width: 49%;
 	a
 	{
 		color: #e16475;
-		text-decoration: underline;
+		text-decoration: none;
 		-moz-transition: color .2s ease-in-out;
 		-webkit-transition: color .2s ease-in-out;
 		-o-transition: color .2s ease-in-out;
@@ -500,7 +512,7 @@ width: 49%;
 			width: 95%;
 			margin:auto;
 	    position: initial;
-			margin-top:150px;
+			margin-top:100px;
 			margin-bottom: 50px;
 		}
 

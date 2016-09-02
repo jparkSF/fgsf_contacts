@@ -39,7 +39,7 @@
             <tr>
               <td id="show_key">전화번호: </td>
               <td id="show_value">
-                <% unless @contact.phone.empty? %>
+                <% unless @contact.phone.nil? %>
                     <%= link_to number_to_phone(@contact.phone.to_i, area_code:true), "tel:#{@contact.phone.to_i}"%>
                 <% end %>
               </td>
