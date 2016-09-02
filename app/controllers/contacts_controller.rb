@@ -84,11 +84,6 @@ end
   end
 
   def import
-      puts "!!!!!!"
-      puts File.extname(params[:file].original_filename)
-
-      puts "!!!!!"
-
       if params[:file].nil?
           redirect_to contacts_database_path, notice: "No file selected"
           return
@@ -96,8 +91,6 @@ end
           redirect_to contacts_database_path, notice: "Incompatible file type"
           return
       end
-
-
 
       if Contact.import(params[:file])
         redirect_to contacts_path, notice: "Contacts successfully imported!"
