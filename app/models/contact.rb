@@ -37,8 +37,6 @@ class Contact < ActiveRecord::Base
     end
 
 
-  #  validates :name, :phone, :presence => true
-  #  validates :name, :length => { :minimum => 2}
 
 
    def downcase_fields

@@ -7,36 +7,23 @@ class ContactsController < ApplicationController
         @contacts = Contact.all.order('created_at DESC')
     end
 
-
-
   respond_to do |format|
         format.html
         format.csv { send_data @contacts.to_csv }
         format.xls
-        format.xlsx #{ send_data @contacts.to_csv(col_sep: "\t") }
+        format.xlsx
   end
+
 end
 
 
-  def import
-    if Contact.import(params[:file])
-    redirect_to contacts_path, notice: "Contacts successfully imported!"
-  elsif Contact.import(params[:file]).nil?
-    redirect_to contacts_database_path, notice: "No file was selected."
-    end
-  end
 
-  #def download
-  #  @contacts = Contact.all
-  #  respond_to do |format|
-  #     format.xlsx {render xlsx: 'download',filename: "contacts.xlsx"}
-  #  end
-  #end
 
 
   def show
     @contact = Contact.find(params[:id])
 
+    #ActiveRecord error handled when manually entered :id is not in the database
     rescue ActiveRecord::RecordNotFound => e
     redirect_to contacts_path, :notice => "This entry does not exist!"
 
@@ -72,14 +59,6 @@ end
         render "new"
       end
 
-
-
-
-
-
-
-
-
   end
 
   def edit
@@ -103,6 +82,34 @@ end
 
     redirect_to contacts_path, :notice => "Successfully deleted !!"
   end
+
+  def import
+      puts "!!!!!!"
+      puts File.extname(params[:file].original_filename)
+
+      puts "!!!!!"
+
+      if params[:file].nil?
+          redirect_to contacts_database_path, notice: "No file selected"
+          return
+      elsif !['.xlsx', '.xls','.csv'].include? (File.extname(params[:file].original_filename))
+          redirect_to contacts_database_path, notice: "Incompatible file type"
+          return
+      end
+
+
+
+      if Contact.import(params[:file])
+        redirect_to contacts_path, notice: "Contacts successfully imported!"
+      end
+  end
+
+  #def download
+  #  @contacts = Contact.all
+  #  respond_to do |format|
+  #     format.xlsx {render xlsx: 'download',filename: "contacts.xlsx"}
+  #  end
+  #end
 
 
   private
