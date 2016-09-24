@@ -1,86 +1,74 @@
-
-
-
 <header><h1 id="home">Create new contacts</h1></header>
-<div id="create_new_form">
-<%=  form_for  @contact, html: {multipart: true} do |f| %>
 
-<p>
+<div id="create_new_form">
+  <%= form_for  @contact, html: {multipart: true} do |f| %>
+  <p>
     이름:
     <%= f.text_field :name %><br />
-</p>
-<p>
-   생일:
-   <%= f.date_select :birthday,:start_year=>Date.today.year - 100,:end_year=>Date.today.year %>
-</p>
-<p>
-   전화번호:
-   <%= f.text_field :phone %><br />
-</p>
-
-<p>
-직분 :
-<%= f.select :position, position, { include_blank: true } %>
-</p>
-
-<p>
-사역 :
-   <%= f.select :sa_yeok, sa_yeok, { include_blank: true } %>
-</p>
-<p>
-목장 :
-   <%= f.select :mok_jang, mok_jang, { include_blank: true } %>
-</p>
-<p>
-   선교회:
-   <%= f.select :sun_kyo, sun_kyo, { include_blank: true } %>
-</p>
-<p>
-   이메일:
-   <%= f.text_field :email %><br />
-</p>
-<p>
+  </p>
+  <p>
+    생일:
+    <%= f.date_select :birthday,:start_year=>Date.today.year - 100,:end_year=>Date.today.year %>
+  </p>
+  <p>
+    전화번호:
+    <%= f.text_field :phone %><br />
+  </p>
+  <p>
+    직분 :
+    <%= f.select :position, position, { include_blank: true } %>
+  </p>
+  <p>
+    사역 :
+    <%= f.select :sa_yeok, sa_yeok, { include_blank: true } %>
+  </p>
+  <p>
+    목장 :
+    <%= f.select :mok_jang, mok_jang, { include_blank: true } %>
+  </p>
+  <p>
+    선교회:
+    <%= f.select :sun_kyo, sun_kyo, { include_blank: true } %>
+  </p>
+  <p>
+    이메일:
+    <%= f.text_field :email %><br />
+  </p>
+  <p>
     Address:
     <%= f.text_field :address_building %><br />
-</p>
-<p>
+  </p>
+  <p>
     City:
     <%= f.text_field :address_city %><br />
-</p>
-<p>
+  </p>
+  <p>
     State:
     <%= f.select :address_state, states, { include_blank: true }%>
-
-
-
-</p>
-<p>
+  </p>
+  <p>
     Zipcode:
     <%= f.text_field :address_zip %><br />
-</p>
-<p>
-   비고 1:
-   <%= f.text_field :other_1 %><br />
-</p>
-<p>
-   비고 2:
-   <%= f.text_field :other_2 %><br />
-</p>
-<p>
-   비고 3:
-   <%= f.text_field :other_3 %><br />
-</p>
-
-<p>
-      사진:<br /><br />
-      <%= f.file_field :image%><br />
-
-</p>
-
-<p id="button">
-  <%= f.submit 'Create' ,{:class => "button scrolly",:id => "show_button create_new_form"} %>
-  <%= link_to 'Cancel', contacts_path, {:class => "button scrolly",:id => "show_button create_new_form"} %>
-  <% end %>
-</p>
-
+  </p>
+  <p>
+    비고 1:
+    <%= f.text_field :other_1 %><br />
+  </p>
+  <p>
+    비고 2:
+    <%= f.text_field :other_2 %><br />
+  </p>
+  <p>
+    비고 3:
+    <%= f.text_field :other_3 %><br />
+  </p>
+  <p>
+    사진:<br /><br />
+    <%= f.file_field :image%><br />
+  </p>
+  <p id="button">
+    <%= f.submit 'Create' ,{:class => "button scrolly",:id => "show_button create_new_form"} %>
+      <%= link_to 'Cancel', contacts_path, {:class => "button scrolly",:id => "show_button create_new_form"} %>
+    <% end %>
+  </p>
 </div>

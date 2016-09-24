@@ -29,6 +29,7 @@ gem 'axlsx', '~> 2.0'
 gem "axlsx_rails"
 gem 'roo'
 gem "iconv", "~> 1.0.3"
+gem 'paperclip', '~> 5.0.0'
 
 
 # Use ActiveModel has_secure_password
@@ -51,5 +52,4 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  gem "paperclip", "~> 5.0.0"
 end

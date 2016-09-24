@@ -4,9 +4,9 @@
   <title>예수인교회 주소록</title>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
   <%= csrf_meta_tags %>
   <%= favicon_link_tag '/logo.ico' %>
-
   <%= favicon_link_tag '/touch-icon-iphone-retina.png', :rel => 'apple-touch-icon', :type => 'image/png' %>
   <%= favicon_link_tag 'touch-icon-iphone-retina.png', :rel => 'apple-touch-icon', :type => 'image/png' %>
 
@@ -23,11 +23,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="robots" content="index,follow">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-
-
 </head>
+
 <body>
   <nav id="nav">
     <ul class="">
@@ -39,11 +36,10 @@
   </nav>
 
   <form id="flash_message">
-  <% flash.each do |key,value| %>
-    <p> <%= value %> </p>
-  <% end %>
+    <% flash.each do |key,value| %>
+      <p> <%= value %> </p>
+    <% end %>
   </form>
-
 
 <%= yield %>
 

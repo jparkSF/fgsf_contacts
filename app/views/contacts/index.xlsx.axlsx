@@ -1,14 +1,13 @@
+wb = xlsx_package.workbook
 
-  wb = xlsx_package.workbook
-
-  wb.styles do |style|
+wb.styles do |style|
   highlight_cell = style.add_style(bg_color: "EFC376",border: Axlsx::STYLE_THIN_BORDER, alignment: { horizontal: :left })
 
   wb.add_worksheet(name: "Contacts") do |sheet|
     sheet.add_row ["id", "name","birthday","phone", "position","sa_yeok","mok_jang", "sun_kyo", "email", "address_building","address_city", "address_state","address_zip",  "other_1", "other_2","other_3","created_at","updated_at","image_file_name","image_content_type", "image_file_size","image_updated_at"],style: [nil, highlight_cell]
 
     @contacts.each do |f|
-        sheet.add_row [f.id,f.name,number_to_phone(f.phone.to_i),f.position,f.sa_yeok,f.mok_jang,f.sun_kyo,f.email,f.address_building,f.address_city,f.address_state,f.address_zip,f.other_1,f.other_2,f.other_3,f.created_at,f.updated_at,f.image_file_name,f.image_content_type,f.image_file_size,f.image_updated_at]
+      sheet.add_row [f.id,f.name,number_to_phone(f.phone.to_i),f.position,f.sa_yeok,f.mok_jang,f.sun_kyo,f.email,f.address_building,f.address_city,f.address_state,f.address_zip,f.other_1,f.other_2,f.other_3,f.created_at,f.updated_at,f.image_file_name,f.image_content_type,f.image_file_size,f.image_updated_at]
     end
   end
 end

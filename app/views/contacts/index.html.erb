@@ -1,67 +1,56 @@
 <header><h1 id="home">Welcome to Contacts!!</h1></header>
+
 <div id="main_frame">
   <div id="search-home">
     <%= form_tag(contacts_path, :method => "get", id: "search-input-home") do %>
-    <%= text_field_tag :search,params[:search], placeholder: "키워드를 입력하세요..." %>
-    <%= submit_tag "검색", :id => "submit" %>
+      <%= text_field_tag :search,params[:search], placeholder: "키워드를 입력하세요..." %>
+      <%= submit_tag "검색", :id => "submit" %>
     <% end %>
 
     <div id="message">
       <% unless @contacts.present? %>
-      <p>There are no contacts containing the term(s): <%= params[:search] %>.</p>
+        <p>There are no contacts containing the term(s): <%= params[:search] %>.</p>
       <% end %>
     </div>
   </div>
 
+  <table id="home">
+    <tr>
+      <th id="name"     width="120px" >이름</th>
+      <th id="age"      width="50px"  >나이</th>
+      <th id="birthday" width="125px" >생일</th>
+      <th id="phone"    width="120px" >전화번호</th>
+      <th id="position" width="75px"  >직분</th>
+      <th id="sa_yeok"  width="95px"  >사역</th>
+      <th id="mok_jang" width="100px" >목장</th>
+      <th id="sun_kyo"  width="100px" >선교</th>
+      <th id="email"    width="130px" >이메일</th>
+      <th id="address"  width=""      >주소</th>
+    </tr>
 
-
-<table id="home">
-  <tr>
-    <th id="name"width="120px">이름</th>
-    <th id="age"width="50px">나이</th>
-    <th id="birthday"width="125px">생일</th>
-    <th id="phone"width="120px">전화번호</th>
-    <th id="position"width="75px">직분</th>
-    <th id="sa_yeok"width="95px">사역</th>
-    <th id="mok_jang"width="100px">목장</th>
-    <th id="sun_kyo"width="100px">선교</th>
-    <th id="email"width="130px">이메일</th>
-    <th id="address"width="">주소</th>
-    <!--<th id="other_1"width="100px">비고 1</th>
-    <th id="other_2"width="100px">비고 2</th>
-    <th id="other_3"width="100px">비고 3</th>-->
-  </tr>
-  <% @contacts.each do |f| %>
-  <tr>
-    <td id="name"><%=link_to f.name.split.map(&:capitalize).join(' '), f %></td>
-    <td id="age"><%=Time.now.year - f.birthday.strftime("%Y").to_i%></td>
-    <td id="birthday"><%=f.birthday.strftime("%Y")%>-<%=f.birthday.strftime("%m")%>-<%=f.birthday.strftime("%d")%></td>
-    <td id="phone">
-      <% unless f.phone.nil? %>
-          <%= link_to number_to_phone(f.phone.to_i, area_code:true), "tel:#{f.phone.to_i}"%></td>
-      <% end %>
-    </td>
-    <td id="position"><%=f.position%></td>
-    <td id="sa_yeok"><%=f.sa_yeok%></td>
-    <td id="mok_jang"><%=f.mok_jang%></td>
-    <td id="sun_kyo"><%=f.sun_kyo%></td>
-    <!-- <td id="email"><%=f.email%></td>-->
-    <td id="email"><%=mail_to "#{f.email}"%></td>
-    <!-- <td id="address"><%=f.address_building%>, <%=f.address_city%>, <%=f.address_state%></td> -->
-    <td id="address">
-      <% unless f.address_building.empty? %>
-        <%= link_to("http://maps.google.com/?q=#{f.address_building},#{f.address_city}, #{f.address_state} #{f.address_zip}",:target => "_blank") do %>
-        <%= f.address_building.split.map(&:capitalize).join(' ')%>, <%=f.address_city.split.map(&:capitalize).join(' ') %>, <%= f.address_state %> <%= f.address_zip %>
-        <% end %>
-      <% end %>
-    </td>
-  </tr>
-
-
-    <!--<td id="other_1"><%=f.other_1%></td>
-  <td id="other_2"><%=f.other_2%></td>
-<td id="other_3"><%=f.other_3%></td> -->
-  </tr>
-  <% end %>
-</table>
+    <% @contacts.each do |f| %>
+      <tr>
+        <td id="name"><%= link_to f.name.to_s.split.map(&:capitalize).join(' '), f %></td>
+        <td id="age"><%= f.birthday && (Time.now.year - f.birthday.strftime("%Y").to_i) %></td>
+        <td id="birthday">
+          <%= f.birthday && f.birthday.strftime('%Y-%m-%d') if f.birthday %>
+        </td>
+        <td id="phone">
+          <% unless f.phone.nil? %>
+            <%= link_to number_to_phone(f.phone.to_i, area_code:true), "tel:#{f.phone.to_i}" %></td>
+          <% end %>
+        </td>
+        <td id="position"><%= f.position %></td>
+        <td id="sa_yeok"><%= f.sa_yeok %></td>
+        <td id="mok_jang"><%= f.mok_jang %></td>
+        <td id="sun_kyo"><%= f.sun_kyo %></td>
+        <td id="email"><%= mail_to f.email %></td>
+        <td id="address">
+          <% if f.address_building %>
+            <%= google_link_converter(f) %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
 </div>

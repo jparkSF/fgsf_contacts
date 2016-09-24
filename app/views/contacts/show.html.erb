@@ -1,110 +1,89 @@
-
-
-
-
-
-
 <div id="show-body">
-    <div  id="show">
-
-      <div id="show-image">
-        <span id="image"><%=image_tag @contact.image.url(:medium)%></span>
-
-<!--
-      <div style="overflow:hidden;width:250px;height:250px;resize:none;margin-top:50px;">
-
-          <iframe  style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=<%=@contact.address_building%>+<%=@contact.address_city%>+<%=@contact.address_state%>+<%=@contact.address_zip%>&key=AIzaSyAQ_zaF9ViTb89Dt_vfyE77zVnqRToz9Ek"></iframe>
-
-
-      </div>-->
+  <div id="show">
+    <div id="show-image">
+      <span id="image"><%=image_tag @contact.image.url(:medium)%></span>
     </div>
-
-      <div id="show-content">
-        <header id="show-header" >
-          <h1>Hi. My name is <strong><%= @contact.name.split.map(&:capitalize).join(' ') %></strong>.</h1>
-        </header>
-        <table id="show-table">
-            <tr>
-              <td id="show_key">이름: </td>
-              <td id="show_value"><%= @contact.name.split.map(&:capitalize).join(' ') %></td>
-            </tr>
-            <tr>
-              <td id="show_key">나이: </td>
-              <td id="show_value"><%=Time.now.year - @contact.birthday.year.to_i %>세</td>
-            </tr>
-            <tr>
-              <td id="show_key">생년월일: </td>
-              <td id="show_value"><%= @contact.birthday.year %>년 <%= @contact.birthday.month %>월 <%= @contact.birthday.day %>일</td>
-            </tr>
-            <tr>
-              <td id="show_key">전화번호: </td>
-              <td id="show_value">
-                <% unless @contact.phone.nil? %>
-                    <%= link_to number_to_phone(@contact.phone.to_i, area_code:true), "tel:#{@contact.phone.to_i}"%>
-                <% end %>
-              </td>
-            </tr>
-            <tr>
-              <td id="show_key">이메일: </td>
-            <td id="show_value"><%= mail_to "#{@contact.email}" %></td>
-
-            </tr>
-            <tr>
-              <td id="show_key">주소: </td>
-              <td id="show_value" style="height:60px;">
-                <% unless @contact.address_building.empty? %>
-                  <%= link_to("http://maps.google.com/?q=#{@contact.address_building},#{@contact.address_city}, #{@contact.address_state} #{@contact.address_zip}",:target => "_blank") do %>
-                  <%= @contact.address_building.split.map(&:capitalize).join(' ') %>
-                  <br />
-                  <%= @contact.address_city.split.map(&:capitalize).join(' ') %>, <%= @contact.address_state %> <%= @contact.address_zip %>
-                  <% end %>
-                <% end %>
-              </td>
-            </tr>
-            <tr>
-              <td id="show_key">직분: </td>
-              <td id="show_value"><%= @contact.position %></td>
-            </tr>
-            <tr>
-              <td id="show_key">사역: </td>
-              <td id="show_value"><%= @contact.sa_yeok %></td>
-            </tr>
-            <tr>
-              <td id="show_key">목장: </td>
-              <td id="show_value"><%= @contact.mok_jang %></td>
-            </tr>
-            <tr>
-              <td id="show_key">선교: </td>
-              <td id="show_value"><%= @contact.sun_kyo %></td>
-            </tr>
-            <tr>
-              <td id="show_key">비고 1: </td>
-              <td id="show_value"><%= @contact.other_1 %></td>
-            </tr>
-            <tr>
-              <td id="show_key">비고 2: </td>
-              <td id="show_value"><%= @contact.other_2 %></td>
-            </tr>
-            <tr>
-              <td id="show_key">비고 3: </td>
-              <td id="show_value"><%= @contact.other_3 %></td>
-            </tr>
-          </table>
-
-</div>
-
-      </div>
-      <div id="show-button">
-        <div id="show-back">
-          <%= link_to 'Back', contacts_path, {:class => "button big scrolly",:id => "show_button"} %>
-        </div>
-        <div id="show-edit">
-          <%= link_to 'Edit', edit_contact_path, {:class => "button big scrolly",:id => "show_button"} %>
-        </div>
-        <div id="show-delete">
-          <%= link_to 'Delete', @contact, {:class=>"button big scrolly",:id=>"show_button",:method => :delete, data:{:confirm =>"Are you sure?"} }%>
-        </div>
-
-      </div>
+    <div id="show-content">
+      <header id="show-header" >
+        <h1>Hi. My name is <strong><%= @contact.name.split.map(&:capitalize).join(' ') %></strong>.</h1>
+      </header>
+      <table id="show-table">
+        <tr>
+          <td id="show_key">이름: </td>
+          <td id="show_value"><%= @contact.name.split.map(&:capitalize).join(' ') %></td>
+        </tr>
+        <tr>
+          <td id="show_key">나이: </td>
+          <td id="show_value"><%= @contact.birthday && (Time.now.year - @contact.birthday.year.to_i) %>세</td>
+        </tr>
+        <tr>
+          <td id="show_key">생년월일: </td>
+          <td id="show_value"><%= @contact.birthday && @contact.birthday.strftime('%y년 %m월 %d일') %></td>
+        </tr>
+        <tr>
+          <td id="show_key">전화번호: </td>
+          <td id="show_value">
+            <% unless @contact.phone.nil? %>
+              <%= link_to number_to_phone(@contact.phone.to_i, area_code:true), "tel:#{@contact.phone.to_i}"%>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td id="show_key">이메일: </td>
+          <td id="show_value"><%= mail_to "#{@contact.email}" %></td>
+        </tr>
+        <tr>
+          <td id="show_key">주소: </td>
+          <td id="show_value" style="height:60px;">
+            <% if @contact.address_building %>
+              <%= link_to("http://maps.google.com/?q=#{@contact.address_building},#{@contact.address_city}, #{@contact.address_state} #{@contact.address_zip}",:target => "_blank") do %>
+                <%= @contact.address_building.split.map(&:capitalize).join(' ') %>
+                <br />
+                <%= @contact.address_city.split.map(&:capitalize).join(' ') %>, <%= @contact.address_state %> <%= @contact.address_zip %>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td id="show_key">직분: </td>
+          <td id="show_value"><%= @contact.position %></td>
+        </tr>
+        <tr>
+          <td id="show_key">사역: </td>
+          <td id="show_value"><%= @contact.sa_yeok %></td>
+        </tr>
+        <tr>
+          <td id="show_key">목장: </td>
+          <td id="show_value"><%= @contact.mok_jang %></td>
+        </tr>
+        <tr>
+          <td id="show_key">선교: </td>
+          <td id="show_value"><%= @contact.sun_kyo %></td>
+        </tr>
+        <tr>
+          <td id="show_key">비고 1: </td>
+          <td id="show_value"><%= @contact.other_1 %></td>
+        </tr>
+        <tr>
+          <td id="show_key">비고 2: </td>
+          <td id="show_value"><%= @contact.other_2 %></td>
+        </tr>
+        <tr>
+          <td id="show_key">비고 3: </td>
+          <td id="show_value"><%= @contact.other_3 %></td>
+        </tr>
+      </table>
     </div>
   </div>
+  <div id="show-button">
+    <div id="show-back">
+      <%= link_to 'Back', contacts_path, {:class => "button big scrolly",:id => "show_button"} %>
+    </div>
+    <div id="show-edit">
+      <%= link_to 'Edit', edit_contact_path, {:class => "button big scrolly",:id => "show_button"} %>
+    </div>
+    <div id="show-delete">
+      <%= link_to 'Delete', @contact, {:class=>"button big scrolly",:id=>"show_button",:method => :delete, data:{:confirm =>"Are you sure?"} }%>
+    </div>
+  </div>
+</div>

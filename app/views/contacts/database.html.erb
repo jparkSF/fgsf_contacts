@@ -1,24 +1,20 @@
 <header><h1 id="home"> Database Import/Export </h1></header>
 
 <div id="main_frame">
+  <p id="download">
+    <i style="font-size:2.4em;" class="fa fa-download" aria-hidden="true">&nbsp;</i>
+    Download Contacts Database:<br /><br />
+    <%= link_to ".csv", contacts_path(format: "csv") %> |
+    <%= link_to ".xls", contacts_path(format: "xls") %> |
+    <%= link_to '.xlsx (Recommended)', contacts_path(format: :xlsx) %>
+  </p>
 
-    <p id="download">
-      <i style="font-size:2.4em;" class="fa fa-download" aria-hidden="true">&nbsp;</i>
-      Download Contacts Database:<br /><br />
-
-        <%= link_to ".csv", contacts_path(format: "csv") %> |
-        <%= link_to ".xls", contacts_path(format: "xls") %> |
-        <%= link_to '.xlsx (Recommended)', contacts_path(format: :xlsx) %>
-
-    </p>
-
-    <p id="download">
+  <p id="download">
     <i style="font-size:2.4em;" id="font-awesome" class="fa fa-upload" aria-hidden="true">&nbsp;</i>
      Import Contacts Database:&nbsp;&nbsp;
     <%= form_tag import_contacts_path, multipart: true do %>
-    <%= file_field_tag :file %>
-    <%= submit_tag 'Import',{:class => "button scrolly",:id => "database_import", :confirm =>"Are you sure to import new contacts?"} %>
-
+      <%= file_field_tag :file %>
+      <%= submit_tag 'Import',{:class => "button scrolly",:id => "database_import", :confirm =>"Are you sure to import new contacts?"} %>
     <% end %>
   </p>
 </div>
