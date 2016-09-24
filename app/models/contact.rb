@@ -6,6 +6,8 @@ class Contact < ActiveRecord::Base
     default_url: '/assets/:style/default_image.jpg'
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
+  validates :name, presence: true
+
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|
       csv << column_names
