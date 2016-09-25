@@ -17,7 +17,6 @@
   <table id="home">
     <tr>
       <th id="name"     width="120px" >이름</th>
-      <th id="age"      width="50px"  >나이</th>
       <th id="birthday" width="125px" >생일</th>
       <th id="phone"    width="120px" >전화번호</th>
       <th id="position" width="75px"  >직분</th>
@@ -31,13 +30,12 @@
     <% @contacts.each do |f| %>
       <tr>
         <td id="name"><%= link_to f.name.to_s.split.map(&:capitalize).join(' '), f %></td>
-        <td id="age"><%= f.birthday && (Time.now.year - f.birthday.strftime("%Y").to_i) %></td>
         <td id="birthday">
           <%= f.birthday && f.birthday.strftime('%Y-%m-%d') if f.birthday %>
         </td>
         <td id="phone">
           <% unless f.phone.nil? %>
-            <%= link_to number_to_phone(f.phone.to_i, area_code:true), "tel:#{f.phone.to_i}" %></td>
+            <%= link_to number_to_phone(f.phone, area_code:true), "tel:#{f.phone.to_i}" %></td>
           <% end %>
         </td>
         <td id="position"><%= f.position %></td>

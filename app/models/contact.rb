@@ -1,6 +1,6 @@
 class Contact < ActiveRecord::Base
-  before_save :downcase_fields
-
+  #before_save :downcase_fields
+  before_save :to_i
   has_attached_file :image,
     styles: { large: '600x600#', medium: '300x300#', thumb: '150x150#' },
     default_url: '/assets/:style/default_image.jpg'
@@ -40,7 +40,7 @@ class Contact < ActiveRecord::Base
         raise "Unknown file type: #{file.original_filename}"
     end
   end
-
+=begin
   def downcase_fields
     self.name.try(:downcase!)
     self.email.try(:downcase!)
@@ -50,6 +50,10 @@ class Contact < ActiveRecord::Base
     self.other_2.try(:downcase!)
     self.other_3.try(:downcase!)
   end
+=end
+   def to_i
+     self.address_zip = address_zip.to_i
+   end
 
    def self.search(term)
      contacts = Contact.all.order('created_at DESC')
