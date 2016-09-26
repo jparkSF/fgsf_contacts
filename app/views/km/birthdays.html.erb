@@ -1,0 +1,12 @@
+<div>
+  <% @birthdays.each do |year, contact_birthdays| %>
+    <div style="float:left;padding:0 10px;">
+      <h2><%= year %></h2>
+      <% contact_birthdays.each do |contact_birthday| %>
+        <div>
+          <span><%= contact_birthday.contact.name %></span>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
