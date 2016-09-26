@@ -6,10 +6,11 @@ Rails.application.routes.draw do
   get 'contacts/edit'
   get 'contacts/show'
   get 'contacts/delete'
+  get 'contacts/search'
+  get 'contacts/database'
   resources :contacts do
     collection do
       post :import
-      get :database
     end
   end
 

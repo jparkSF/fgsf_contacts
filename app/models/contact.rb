@@ -7,7 +7,7 @@ class Contact < ActiveRecord::Base
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   validates :name, presence: true
-  validates :gender, inclusion: { in: %w(male female), message: '%{value} is not a real gender.' }
+  validates :gender, inclusion: { in: %w(male female), message: '%{value} is not a real gender.' }, allow_nil: true
 
   belongs_to :contact_group, primary_key: :contact_id, foreign_key: :id
   has_one :contact_birthday, primary_key: :id, foreign_key: :contact_id
