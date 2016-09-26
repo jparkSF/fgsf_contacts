@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :km do
     collection do
       get :roles
+      get :birthdays
     end
   end
 end

@@ -6,4 +6,8 @@ class KmController < ApplicationController
   def roles
     @roles = ContactRole.contact_roles
   end
+
+  def birthdays
+    @birthdays = ContactBirthday.contact_birthdays
+  end
 end
