@@ -1,0 +1,22 @@
+<div>
+  <% @groups.each do |group_name, contacts| %>
+    <div style="float:left;;padding:0 10px;">
+      <h2><%= group_name%></h2>
+      <% contacts.each do |contact| %>
+        <% if contact.male? %>
+          <span><%= link_to contact.name, contact_path(contact), style: 'color:#3366BB;' %></span>
+        <% elsif contact.female? %>
+          <span><%= link_to contact.name, contact_path(contact), style: 'color:#660000;' %></span>
+        <% else %>
+          <span><%= contact.name %></span>
+        <% end %>
+
+        <span><%= contact.contact_birthday.try(:year).to_s[-2..3] %></span>
+        <% contact.contact_roles.each do |role| %>
+          <span><a href="/km/roles">[<%= ContactRole.convert_role(role.role_name) %>]</a></span>
+        <% end %>
+        <br/>
+      <% end %>
+    </div>
+  <% end %>
+</div>
