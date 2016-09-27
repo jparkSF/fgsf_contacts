@@ -42,7 +42,8 @@ class ContactsController < ApplicationController
   def update
     initialize_contact
     @contact.update_attributes!(user_params)
-    redirect_to contacts_path, :notice => 'Successfully updated.'
+    #redirect_to contacts_show_path, :notice => 'Successfully updated.'
+    redirect_to action: "show", :notice => 'Successfully updated.'
   rescue => e
     # Captures any exceptions and display error message on page
     flash[:notice] = e.message
