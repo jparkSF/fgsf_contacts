@@ -43,6 +43,7 @@ div#show-body{
  		justify-content: center;
 		position: absolute;
 		margin: auto;
+		margin-top: 50px;
 }
 div#show{
 		margin: auto;
@@ -96,9 +97,13 @@ img{
 /* application */
 
 	form#flash_message{
-		margin-top:90px;
-		margin-left:60px;
+		padding-top:50px;
+		padding-left:60px;
 		color:green;
+		position: fixed;
+		background-color: white;
+		z-index:200;
+		width: 100%;
 	}
 
  p#button input{
@@ -202,7 +207,7 @@ width: 49%;
 	}
 
 	div#create_new_form{
-		padding-top: 30px;
+		padding-top: 80px;
 		margin-top:100px;
 		margin: auto;
 		margin-bottom:190px;
@@ -238,10 +243,12 @@ width: 49%;
 
 	}
 	div#search-home{
-		margin:28px;
-		margin: auto;
+		padding: 15px 0 40px 0;
+		z-index: 100;
+		background-color: white;
 		width: 100%;
-		position: absolute;
+		position: fixed;
+
 
 	}
 
@@ -249,6 +256,7 @@ width: 49%;
 		margin-top:5px;
 		margin-bottom:8px;
 		margin-left:50px;
+
 	}
 
 
@@ -265,9 +273,16 @@ width: 49%;
 		font-weight: bold;
 		height:35px;
 	}
+
+	tr#header-table-index{
+		position:fixed;
+		z-index: 500;
+		width: 100%;
+		background-color: white;
+
+	}
 	td#show_value{
 		font-size: 1.5em;
-
 	}
 
 	table#home th{
@@ -969,7 +984,7 @@ width: 49%;
 		top:0;
 
 		padding-top:10px;
-		padding-bottom:10px;
+		/*padding-bottom:10px; */
 
 
 		width: 100%;
