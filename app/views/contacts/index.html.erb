@@ -15,27 +15,33 @@
   </div>
 
   <table id="home">
-    <tr>
-      <th id="name"     width="120px" >이름</th>
-      <th id="birthday" width="125px" >생일</th>
-      <th id="phone"    width="120px" >전화번호</th>
-      <th id="position" width="75px"  >직분</th>
-      <th id="sa_yeok"  width="95px"  >사역</th>
-      <th id="mok_jang" width="100px" >목장</th>
-      <th id="sun_kyo"  width="100px" >선교</th>
-      <th id="email"    width="130px" >이메일</th>
-      <th id="address"  width=""      >주소</th>
+    <tr id="header-table-index">
+      <th id="name" width="100px">이름</th>
+      <th id="birthday" width="120px">생일</th>
+      <th id="phone" width="135px">전화번호</th>
+      <th id="position" width="80px">직분</th>
+      <th id="sa_yeok" width="100px">사역</th>
+      <th id="mok_jang" width="120px">목장</th>
+      <th id="sun_kyo" width="120px">선교</th>
+      <th id=" pxail" width="120px">이메일</th>
+      <th id="address" width="">주소</th>
     </tr>
 
     <% @contacts.each do |f| %>
       <tr>
         <td id="name"><%= link_to f.name.to_s.split.map(&:capitalize).join(' '), f %></td>
         <td id="birthday">
-          <%= f.birthday && f.birthday.strftime('%Y-%m-%d') if f.birthday %>
+          <% if f.birthday %>
+            <%= f.birthday && f.birthday.strftime('%Y-%m-%d') %>
+          <% else %>
+            &nbsp;
+          <% end %>
         </td>
         <td id="phone">
           <% unless f.phone.nil? %>
             <%= link_to number_to_phone(f.phone, area_code:true), "tel:#{f.phone.to_i}" %></td>
+          <% else %>
+            &nbsp;
           <% end %>
         </td>
         <td id="position"><%= f.position %></td>
@@ -46,6 +52,8 @@
         <td id="address">
           <% if f.address_building %>
             <%= google_link_converter(f) %>
+          <% else %>
+            &nbsp;
           <% end %>
         </td>
       </tr>
