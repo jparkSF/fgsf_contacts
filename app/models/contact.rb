@@ -7,6 +7,11 @@ class Contact < ActiveRecord::Base
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   validates :name, presence: true
+  validates :gender, inclusion: { in: %w(male female), message: '%{value} is not a real gender.' }, allow_nil: true
+
+  belongs_to :contact_group, primary_key: :contact_id, foreign_key: :id
+  has_one :contact_birthday, primary_key: :id, foreign_key: :contact_id
+  has_many :contact_roles, primary_key: :id, foreign_key: :contact_id
 
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|
@@ -55,10 +60,18 @@ class Contact < ActiveRecord::Base
      self.address_zip = address_zip.to_i
    end
 
-   def self.search(term)
-     contacts = Contact.all.order('created_at DESC')
-     contacts.select do |contact|
-       contact.attributes.any? { |key, val| val.to_s.include?(term) }
-     end
-   end
+  def self.search(term)
+    contacts = Contact.all.order('created_at DESC')
+    contacts.select do |contact|
+      contact.attributes.any? { |key, val| val.to_s.include?(term) }
+    end
+  end
+
+  def male?
+    gender == 'male'
+  end
+
+  def female?
+    gender == 'female'
+  end
 end
