@@ -243,7 +243,7 @@ width: 49%;
 
 	}
 	div#search-home{
-		padding: 15px 0 40px 0;
+		padding: 15px 0 0 0;
 		z-index: 100;
 		background-color: white;
 		width: 100%;
@@ -259,11 +259,12 @@ width: 49%;
 
 	}
 
-
+	th{
+		vertical-align: middle;
+	}
 
 	table{
-
-		margin: 0
+		margin: 0;
 		position:fixed;
   	width:100%;
 		margin-bottom:50px;
@@ -275,11 +276,8 @@ width: 49%;
 	}
 
 	tr#header-table-index{
-		position:fixed;
 		z-index: 500;
-		width: 100%;
 		background-color: white;
-
 	}
 	td#show_value{
 		font-size: 1.5em;
