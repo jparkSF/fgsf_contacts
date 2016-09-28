@@ -27,7 +27,8 @@ class ContactsController < ApplicationController
   end
 
   def create
-    @contact = Contact.create!(user_params)
+    @contact = Contact.new(user_params)
+    @contact.save!
     redirect_to contacts_path, :notice => 'Successfully Created.'
   rescue => e
     # Captures any exceptions and display error message on page
