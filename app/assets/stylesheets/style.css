@@ -9,6 +9,14 @@
 /* Custom                                                                        */
 /*********************************************************************************/
 
+div.user_form{
+padding-top:180px;
+width: 400px;
+margin: auto;
+}
+
+
+
 p#download{
 	margin-top:100px;
 	margin-bottom:50px;
@@ -27,6 +35,13 @@ p#download{
 	 display: block;
  }
 
+#nav a#user_session{
+	float: right;
+	color:#8c8c8c;
+	font-size: 1.1em;
+	margin:0 15px 0 0;
+	padding:0;
+}
 
 /* Embedded Google Map */
 
@@ -97,7 +112,7 @@ img{
 /* application */
 
 	form#flash_message{
-		padding-top:50px;
+		padding-top:75px;
 		padding-left:60px;
 		color:green;
 		position: fixed;
@@ -243,7 +258,7 @@ width: 49%;
 
 	}
 	div#search-home{
-		padding: 15px 0 0 0;
+		padding: 40px 0 0 0;
 		z-index: 100;
 		background-color: white;
 		width: 100%;
@@ -525,7 +540,7 @@ width: 49%;
 			width: 95%;
 			margin:auto;
 	    position: initial;
-			margin-top:100px;
+			margin-top:120px;
 			margin-bottom: 50px;
 		}
 
@@ -1007,6 +1022,7 @@ width: 49%;
 			color: #fff;
 			text-decoration: none;
 			outline: 0;
+			padding:2px 7px 2px 7px;
 		}
 
 			#nav a:hover
