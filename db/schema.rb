@@ -11,33 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160925025058) do
-
-  create_table "contact_birthdays", force: :cascade do |t|
-    t.integer  "contact_id"
-    t.integer  "year"
-    t.integer  "month"
-    t.integer  "day"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "contact_groups", force: :cascade do |t|
-    t.integer  "contact_id"
-    t.string   "group_type"
-    t.string   "group_name"
-    t.boolean  "leader"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "contact_roles", force: :cascade do |t|
-    t.integer  "contact_id"
-    t.string   "role_name"
-    t.boolean  "leader"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+ActiveRecord::Schema.define(version: 20160816064958) do
 
   create_table "contacts", force: :cascade do |t|
     t.string   "name"
@@ -61,7 +35,6 @@ ActiveRecord::Schema.define(version: 20160925025058) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.string   "gender"
   end
 
 end
