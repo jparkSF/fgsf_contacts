@@ -17,7 +17,7 @@ prod_common: &prod_common
   pool:     30
   timeout:  5000
   username: fgsf-user
-  password: <%= YAML.load_file(SECRET_PATH)['database_password'] %>
+  password: <%= YAML.load_file(SECRET_PATH)['database_password'] rescue 'default' %>
 
 production:
   <<: *prod_common
