@@ -1,5 +1,6 @@
 class ContactsController < ApplicationController
   ACCEPTED_EXTENSIONS = %w(.xlsx .xls .csv).freeze
+  before_action :authenticate_user!
 
   def index
     initialize_all_contacts
@@ -23,11 +24,11 @@ class ContactsController < ApplicationController
   end
 
   def new
-    @contact = Contact.new
+    @contact = current_user.contacts.build
   end
 
   def create
-    @contact = Contact.new(user_params)
+    @contact = current_user.contacts.build(user_params)
     @contact.save!
     redirect_to contacts_path, :notice => 'Successfully Created.'
   rescue => e

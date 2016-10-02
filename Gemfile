@@ -31,6 +31,8 @@ gem 'roo'
 gem "iconv", "~> 1.0.3"
 gem 'paperclip', '~> 5.0.0'
 gem 'mysql2'
+gem 'devise', '~> 4.2'
+
 
 
 # Use ActiveModel has_secure_password

@@ -75,11 +75,13 @@
     <div id="show-back">
       <%= link_to 'Back', contacts_path, {:class => "button big scrolly",:id => "show_button"} %>
     </div>
+    <% if @contact.user_id == current_user.id %>
     <div id="show-edit">
       <%= link_to 'Edit', edit_contact_path, {:class => "button big scrolly",:id => "show_button"} %>
     </div>
     <div id="show-delete">
       <%= link_to 'Delete', @contact, {:class=>"button big scrolly",:id=>"show_button",:method => :delete, data:{:confirm =>"Are you sure?"} }%>
     </div>
+    <% end %>
   </div>
 </div>
