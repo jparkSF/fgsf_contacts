@@ -5,13 +5,19 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :contacts
-  has_one :user_role, primary_key: :id, foreign_key: :user_id, dependent: destroy
+  has_one :user_role, primary_key: :id, foreign_key: :user_id
 
-  def user_is_admin?
-   user_role.present?
+
+  def is_admin?
+    user_role.role_type.present?
+    puts "is_admin?"
   end
 
   def rwx_admin?
-   user_role.present? && user_role.rwx_admin?
+    user_role.role_type.present? && user_role.admin_rwx_access?
   end
+
+
+
+
 end

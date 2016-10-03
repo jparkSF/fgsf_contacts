@@ -1,8 +1,10 @@
 class ContactsController < ApplicationController
   ACCEPTED_EXTENSIONS = %w(.xlsx .xls .csv).freeze
-  before_action :authenticate_user!
 
+  #before_action :check_accessibility!, only: [:index, :show]
+  before_action :authenticate_user!
   def index
+
     initialize_all_contacts
 
     respond_to do |format|
@@ -81,6 +83,7 @@ class ContactsController < ApplicationController
   #  end
   #end
 
+
   private
 
   def initialize_contact
@@ -93,6 +96,10 @@ class ContactsController < ApplicationController
     else
       Contact.all.order('created_at DESC')
     end
+  end
+
+  def check_accessibility!
+
   end
 
   def user_params

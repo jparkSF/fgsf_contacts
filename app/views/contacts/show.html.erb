@@ -75,7 +75,7 @@
     <div id="show-back">
       <%= link_to 'Back', contacts_path, {:class => "button big scrolly",:id => "show_button"} %>
     </div>
-    <% if @contact.user_id == current_user.id %>
+    <% if User.find(1).id == current_user.id %>
     <div id="show-edit">
       <%= link_to 'Edit', edit_contact_path, {:class => "button big scrolly",:id => "show_button"} %>
     </div>

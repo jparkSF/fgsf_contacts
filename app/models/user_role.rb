@@ -1,5 +1,5 @@
 class UserRole < ActiveRecord::Base
-  
+
   belongs_to :user, primary_key: :user_id, foreign_key: :id
 
   ROLE_TYPE = %w(admin_rwx_access admin_rw_access admin_r_access).freeze
@@ -10,12 +10,14 @@ class UserRole < ActiveRecord::Base
 
   validates :role_type, inclusion: { in: ROLE_TYPE, message: '%{value} is not a valid role type.' }, allow_nil: true
 
-  def rwx_admin?
-    user_type == ADMIN_RWX_ACCESS
+  def admin_r_access?
+    role_type == ADMIN_R_ACCESS
   end
 
-  def r_admin?
-    user_type == ADMIN_R_ACCESS
+  def admin_rwx_access?
+    role_type == ADMIN_RWX_ACCESS
   end
+
+
 
 end
