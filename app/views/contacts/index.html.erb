@@ -39,7 +39,7 @@
         </td>
         <td id="phone">
           <% unless f.phone.nil? %>
-            <%= link_to number_to_phone(f.phone, area_code:true), "tel:#{f.phone.to_i}" %></td>
+            <%= link_to number_to_phone(f.phone, area_code:true), "tel:#{f.phone}" %></td>
           <% else %>
             &nbsp;
           <% end %>

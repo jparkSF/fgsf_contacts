@@ -43,6 +43,15 @@ p#download{
 	padding:0;
 }
 
+#nav a#user_session:hover{
+	float: right;
+	color:#ffaa00 !important;
+	font-size: 1.1em;
+	margin:0 15px 0 0;
+	padding:0;
+	background-color:white;
+}
+
 /* Embedded Google Map */
 
 /* contacts/new, contacts/edit image_tag styling*/
@@ -661,7 +670,7 @@ width: 49%;
 		input[type="reset"],
 		.button
 		{
-
+			width: 100%;
 			-webkit-appearance: none;
 			position: -webkit-box;
 			display: inline-block;
