@@ -1,10 +1,12 @@
 class ContactsController < ApplicationController
+
   ACCEPTED_EXTENSIONS = %w(.xlsx .xls .csv).freeze
 
-  #before_action :check_accessibility!, only: [:index, :show]
+  before_action :check_admin!, except: [:search]
+  before_action :check_accessibility!, except: [:index, :show, :search]
   before_action :authenticate_user!
-  def index
 
+  def index
     initialize_all_contacts
 
     respond_to do |format|
@@ -86,42 +88,46 @@ class ContactsController < ApplicationController
 
   private
 
-  def initialize_contact
-    @contact = Contact.find(params[:id])
-  end
-
-  def initialize_all_contacts
-    @contacts = if params[:search]
-      Contact.search(params[:search])
-    else
-      Contact.all.order('created_at DESC')
+    def check_admin!
+      redirect_to "/", notice: "You don't have permissions to access" unless current_user.r_admin? || current_user.rwx_admin?
     end
-  end
 
-  def check_accessibility!
+    def check_accessibility!
+      redirect_to "/", notice: "You don't have permissions to access" unless current_user.rwx_admin?
+    end
 
-  end
+    def initialize_contact
+      @contact = Contact.find(params[:id])
+    end
 
-  def user_params
-    params.require(:contact).permit(
-      :name,
-      :birthday,
-      :phone,
-      :position,
-      :sa_yeok,
-      :mok_jang,
-      :sun_kyo,
-      :email,
-      :address_building,
-      :address_city,
-      :address_zip,
-      :address_state,
-      :other_1,
-      :other_2,
-      :other_3,
-      :image,
-      :created_at,
-      :updated_at
-    )
-  end
+    def initialize_all_contacts
+      @contacts = if params[:search]
+        Contact.search(params[:search])
+      else
+        Contact.all.order('created_at DESC')
+      end
+    end
+
+    def user_params
+      params.require(:contact).permit(
+        :name,
+        :birthday,
+        :phone,
+        :position,
+        :sa_yeok,
+        :mok_jang,
+        :sun_kyo,
+        :email,
+        :address_building,
+        :address_city,
+        :address_zip,
+        :address_state,
+        :other_1,
+        :other_2,
+        :other_3,
+        :image,
+        :created_at,
+        :updated_at
+      )
+    end
 end

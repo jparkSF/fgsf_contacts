@@ -8,16 +8,19 @@ class User < ActiveRecord::Base
   has_one :user_role, primary_key: :id, foreign_key: :user_id
 
 
-  def is_admin?
-    user_role.role_type.present?
-    puts "is_admin?"
+  def r_admin?
+    if user_role == nil
+      false
+    else
+      user_role.admin_r_access?
+    end
   end
 
   def rwx_admin?
-    user_role.role_type.present? && user_role.admin_rwx_access?
+    if user_role == nil
+      false
+    else
+      user_role.admin_rwx_access?
+    end
   end
-
-
-
-
 end

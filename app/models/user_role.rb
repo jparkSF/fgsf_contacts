@@ -5,6 +5,7 @@ class UserRole < ActiveRecord::Base
   ROLE_TYPE = %w(admin_rwx_access admin_rw_access admin_r_access).freeze
 
   ADMIN_RWX_ACCESS = 'admin_rwx_access'.freeze
+  ADMIN_RW_ACCESS = 'admin_rw_access'.freeze
   ADMIN_R_ACCESS = 'admin_r_access'.freeze
 
 
