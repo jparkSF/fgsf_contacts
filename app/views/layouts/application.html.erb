@@ -30,7 +30,7 @@
     <ul>
       <a href="/contacts/"><i id="font-awesome" class="fa fa-home" aria-hidden="true"></i></a>
       <a href="/contacts/search"><i id="font-awesome" class="fa fa-search" aria-hidden="true"></i></a>
-      <% if user_signed_in? && current_user.id == 1 %>
+      <% if user_signed_in? && current_user.rwx_admin? %>
         <a href="/contacts/new"><i id="font-awesome" class="fa fa-plus" aria-hidden="true"></i></a>
         <a href="/contacts/database"><i id="font-awesome" class="fa fa-database" aria-hidden="true"></i></a>
       <% end %>

@@ -4,23 +4,18 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :contacts
   has_one :user_role, primary_key: :id, foreign_key: :user_id
 
-
   def r_admin?
-    if user_role == nil
-      false
-    else
-      user_role.admin_r_access?
-    end
+    user_role.try(:admin_r_access?) || user_role.try(:admin_rw_access?) || user_role.try(:admin_rwx_access?)
   end
+=begin
+  def rw_admin?
+    user_role.try(:admin_rw_access?) || user_role.try(:admin_rwx_access?)
+  end
+=end
 
   def rwx_admin?
-    if user_role == nil
-      false
-    else
-      user_role.admin_rwx_access?
-    end
+    user_role.try(:admin_rwx_access?)
   end
 end

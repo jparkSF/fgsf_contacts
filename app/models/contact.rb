@@ -1,6 +1,6 @@
 class Contact < ActiveRecord::Base
   #before_save :downcase_fields
-  belongs_to :user
+  
   before_save :to_i
   has_attached_file :image,
     styles: { large: '600x600#', medium: '300x300#', thumb: '150x150#' },
