@@ -8,24 +8,28 @@ case $env in
     test)
     port=4444
     ;;
-    prod|producion)
+    prod|production)
     port=3333
     ;;
     *)
     # unknown option
-    echo "must specify environemtn (ie: test or prod)"
+    echo "Must specify environemtn (ie: test, prod, or production)"
     exit 1
     ;;
 esac
 
 if [ -e "$PWD/tmp/pids/server.pid" ]; then
-	echo 'Killing server..'
+	echo '******Killing server..'
 	less $PWD/tmp/pids/server.pid | xargs kill
 fi
 
-echo 'Pull latest master'
+echo '******Pulling latest master'
 git pull
-echo 'Db migrate'
+
+echo '******Rake migrating DB'
 bundle exec rake db:migrate
-echo 'Running Server as daemon'
+
+echo '******Running Server as daemon'
 rails s -p $port -d
+
+echo '******DONE'
