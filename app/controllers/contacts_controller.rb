@@ -1,5 +1,10 @@
 class ContactsController < ApplicationController
+
   ACCEPTED_EXTENSIONS = %w(.xlsx .xls .csv).freeze
+
+  before_action :check_admin!, except: [:search]
+  before_action :check_accessibility!, except: [:index, :show, :search]
+  before_action :authenticate_user!
 
   def index
     initialize_all_contacts
@@ -23,11 +28,11 @@ class ContactsController < ApplicationController
   end
 
   def new
-    @contact = Contact.new
+    @contact = current_user.contacts.build
   end
 
   def create
-    @contact = Contact.new(user_params)
+    @contact = current_user.contacts.build(user_params)
     @contact.save!
     redirect_to contacts_path, :notice => 'Successfully Created.'
   rescue => e
@@ -80,40 +85,49 @@ class ContactsController < ApplicationController
   #  end
   #end
 
+
   private
 
-  def initialize_contact
-    @contact = Contact.find(params[:id])
-  end
-
-  def initialize_all_contacts
-    @contacts = if params[:search]
-      Contact.search(params[:search])
-    else
-      Contact.all.order('created_at DESC')
+    def check_admin!
+      redirect_to "/", notice: "You don't have permissions to access" unless current_user.r_admin? || current_user.rwx_admin?
     end
-  end
 
-  def user_params
-    params.require(:contact).permit(
-      :name,
-      :birthday,
-      :phone,
-      :position,
-      :sa_yeok,
-      :mok_jang,
-      :sun_kyo,
-      :email,
-      :address_building,
-      :address_city,
-      :address_zip,
-      :address_state,
-      :other_1,
-      :other_2,
-      :other_3,
-      :image,
-      :created_at,
-      :updated_at
-    )
-  end
+    def check_accessibility!
+      redirect_to "/", notice: "You don't have permissions to access" unless current_user.rwx_admin?
+    end
+
+    def initialize_contact
+      @contact = Contact.find(params[:id])
+    end
+
+    def initialize_all_contacts
+      @contacts = if params[:search]
+        Contact.search(params[:search])
+      else
+        Contact.all.order('created_at DESC')
+      end
+    end
+
+    def user_params
+      params.require(:contact).permit(
+        :name,
+        :birthday,
+        :phone,
+        :position,
+        :sa_yeok,
+        :mok_jang,
+        :sun_kyo,
+        :email,
+        :address_building,
+        :address_city,
+        :address_zip,
+        :address_state,
+        :other_1,
+        :other_2,
+        :other_3,
+        :image,
+        :created_at,
+        :updated_at
+      )
+    end
 end
