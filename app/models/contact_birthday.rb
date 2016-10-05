@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class ContactBirthday < ActiveRecord::Base
   belongs_to :contact, primary_key: :id, foreign_key: :contact_id
 

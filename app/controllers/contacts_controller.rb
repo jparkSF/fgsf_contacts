@@ -1,5 +1,5 @@
+# frozen_string_literal: true
 class ContactsController < ApplicationController
-
   ACCEPTED_EXTENSIONS = %w(.xlsx .xls .csv).freeze
 
   before_action :authenticate_user!
@@ -24,7 +24,7 @@ class ContactsController < ApplicationController
   def show
     initialize_contact
   rescue ActiveRecord::RecordNotFound
-    redirect_to contacts_path, :notice => 'This entry does not exist.'
+    redirect_to contacts_path, notice: 'This entry does not exist.'
   end
 
   def new
@@ -34,7 +34,7 @@ class ContactsController < ApplicationController
   def create
     @contact = Contact.new(user_params)
     @contact.save!
-    redirect_to contacts_path, :notice => 'Successfully Created.'
+    redirect_to contacts_path, notice: 'Successfully Created.'
   rescue => e
     # Captures any exceptions and display error message on page
     flash[:notice] = e.message
@@ -48,8 +48,8 @@ class ContactsController < ApplicationController
   def update
     initialize_contact
     @contact.update_attributes!(user_params)
-    #redirect_to contacts_path, :notice => 'Successfully updated.'
-    redirect_to show, :notice => 'Successfully updated.'
+    # redirect_to contacts_path, :notice => 'Successfully updated.'
+    redirect_to show, notice: 'Successfully updated.'
 
   rescue => e
     # Captures any exceptions and display error message on page
@@ -60,7 +60,7 @@ class ContactsController < ApplicationController
   def destroy
     initialize_contact
     @contact.destroy!
-    redirect_to contacts_path, :notice => 'Successfully deleted.'
+    redirect_to contacts_path, notice: 'Successfully deleted.'
   rescue => e
     # Captures any exceptions and display error message on page
     flash[:notice] = e.message
@@ -78,56 +78,55 @@ class ContactsController < ApplicationController
     end
   end
 
-  #def download
+  # def download
   #  @contacts = Contact.all
   #  respond_to do |format|
   #     format.xlsx {render xlsx: 'download',filename: "contacts.xlsx"}
   #  end
-  #end
-
+  # end
 
   private
 
-    def check_admin!
-      redirect_to "/", notice: "You don't have permissions to access" unless current_user.r_admin? || current_user.rwx_admin?
-    end
+  def check_admin!
+    redirect_to '/', notice: "You don't have permissions to access" unless current_user.r_admin? || current_user.rwx_admin?
+  end
 
-    def check_accessibility!
-      redirect_to "/", notice: "You don't have permissions to access" unless current_user.rwx_admin?
-    end
+  def check_accessibility!
+    redirect_to '/', notice: "You don't have permissions to access" unless current_user.rwx_admin?
+  end
 
-    def initialize_contact
-      @contact = Contact.find(params[:id])
-    end
+  def initialize_contact
+    @contact = Contact.find(params[:id])
+  end
 
-    def initialize_all_contacts
-      @contacts = if params[:search]
-        Contact.search(params[:search])
-      else
-        Contact.all.order('created_at DESC')
-      end
+  def initialize_all_contacts
+    @contacts = if params[:search]
+                  Contact.search(params[:search])
+                else
+                  Contact.all.order('created_at DESC')
     end
+  end
 
-    def user_params
-      params.require(:contact).permit(
-        :name,
-        :birthday,
-        :phone,
-        :position,
-        :sa_yeok,
-        :mok_jang,
-        :sun_kyo,
-        :email,
-        :address_building,
-        :address_city,
-        :address_zip,
-        :address_state,
-        :other_1,
-        :other_2,
-        :other_3,
-        :image,
-        :created_at,
-        :updated_at
-      )
-    end
+  def user_params
+    params.require(:contact).permit(
+      :name,
+      :birthday,
+      :phone,
+      :position,
+      :sa_yeok,
+      :mok_jang,
+      :sun_kyo,
+      :email,
+      :address_building,
+      :address_city,
+      :address_zip,
+      :address_state,
+      :other_1,
+      :other_2,
+      :other_3,
+      :image,
+      :created_at,
+      :updated_at
+    )
+  end
 end
