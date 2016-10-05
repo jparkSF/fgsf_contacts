@@ -28,11 +28,11 @@ class ContactsController < ApplicationController
   end
 
   def new
-    @contact = current_user.contacts.build
+    @contact = Contact.new
   end
 
   def create
-    @contact = current_user.contacts.build(user_params)
+    @contact = Contact.new(user_params)
     @contact.save!
     redirect_to contacts_path, :notice => 'Successfully Created.'
   rescue => e
