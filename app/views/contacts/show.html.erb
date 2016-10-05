@@ -13,18 +13,14 @@
           <td id="show_value"><%= @contact.name.split.map(&:capitalize).join(' ') %></td>
         </tr>
         <tr>
-          <td id="show_key">나이: </td>
-          <td id="show_value"><%= @contact.birthday && (Time.now.year - @contact.birthday.year.to_i) %>세</td>
-        </tr>
-        <tr>
           <td id="show_key">생년월일: </td>
-          <td id="show_value"><%= @contact.birthday && @contact.birthday.strftime('%y년 %m월 %d일') %></td>
+          <td id="show_value"><%= @contact.birthday.strftime('%Y년 %m월 %d일') %></td>
         </tr>
         <tr>
           <td id="show_key">전화번호: </td>
           <td id="show_value">
             <% unless @contact.phone.nil? %>
-              <%= link_to number_to_phone(@contact.phone.to_i, area_code:true), "tel:#{@contact.phone.to_i}"%>
+              <%= link_to number_to_phone(@contact.phone, area_code:true), "tel:#{@contact.phone.to_i}"%>
             <% end %>
           </td>
         </tr>
@@ -79,11 +75,13 @@
     <div id="show-back">
       <%= link_to 'Back', contacts_path, {:class => "button big scrolly",:id => "show_button"} %>
     </div>
+    <% if current_user.rwx_admin? %>
     <div id="show-edit">
       <%= link_to 'Edit', edit_contact_path, {:class => "button big scrolly",:id => "show_button"} %>
     </div>
     <div id="show-delete">
       <%= link_to 'Delete', @contact, {:class=>"button big scrolly",:id=>"show_button",:method => :delete, data:{:confirm =>"Are you sure?"} }%>
     </div>
+    <% end %>
   </div>
 </div>

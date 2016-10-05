@@ -1,10 +1,16 @@
-@charset 'UTF-8';
+@charset "UTF-8";
 @import url('http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,600,600italic,700');
 @import url('font-awesome-4.6.3/css/font-awesome.min.css');
 
 /*********************************************************************************/
 /* Custom                                                                        */
 /*********************************************************************************/
+
+div.user_form {
+    padding-top: 180px;
+    width: 400px;
+    margin: auto;
+}
 
 p#download {
     margin-top: 100px;
@@ -14,7 +20,6 @@ p#download {
     width: 30%;
     text-align: center;
     font-size: 1.5em;
-
 }
 
 input#database_import {
@@ -22,6 +27,23 @@ input#database_import {
     width: 300px;
     font-size: 1.2em;
     display: block;
+}
+
+#nav a#user_session {
+    float: right;
+    color: #8c8c8c;
+    font-size: 1.1em;
+    margin: 0 15px 0 0;
+    padding: 0;
+}
+
+#nav a#user_session:hover {
+    float: right;
+    color: #ffaa00 !important;
+    font-size: 1.1em;
+    margin: 0 15px 0 0;
+    padding: 0;
+    background-color: white;
 }
 
 /* Embedded Google Map */
@@ -56,7 +78,14 @@ div#show-button {
     justify-content: center;
     bottom: 0;
     /*margin-top: 50px; */
+}
 
+div#show-body {
+    width: 100%;
+    justify-content: center;
+    position: absolute;
+    margin: auto;
+    margin-top: 50px;
 }
 
 div#show-back, #show-edit, #show-delete {
@@ -116,10 +145,15 @@ header#search-heading {
     text-align: center;
 }
 
-form#search-input-home {
-    width: 500px;
-    display: flex;
-    padding-top: 10px;
+form#flash_message {
+    padding-top: 75px;
+    padding-left: 60px;
+    color: green;
+    position: fixed;
+    background-color: white;
+    z-index: 200;
+    width: 100%;
+}
 
 }
 
@@ -213,11 +247,16 @@ div#create_new_form p {
 
 }
 
-div#main_frame {
+div#create_new_form {
+    padding-top: 80px;
+    margin-top: 100px;
     margin: auto;
-    padding-top: 50px;
-    position: absolute;
+    margin-bottom: 190px;
     width: 100%;
+    font-size: 1.2em;
+    position: absolute;
+    padding-left: 25%;
+    padding-right: 25%;
 
 }
 
@@ -259,7 +298,48 @@ table td#show_key {
 
 td#show_value {
     font-size: 1.5em;
+}
 
+div#search-home {
+    padding: 40px 0 0 0;
+    z-index: 100;
+    background-color: white;
+    width: 100%;
+    position: fixed;
+
+}
+
+div#message {
+    margin-top: 5px;
+    margin-bottom: 8px;
+    margin-left: 50px;
+
+}
+
+th {
+    vertical-align: middle;
+}
+
+table {
+    margin: 0;
+    position: fixed;
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+table td#show_key {
+    font-size: 1.5em;
+    font-weight: bold;
+    height: 35px;
+}
+
+tr#header-table-index {
+    z-index: 500;
+    background-color: white;
+}
+
+td#show_value {
+    font-size: 1.5em;
 }
 
 table#home th {
@@ -473,7 +553,7 @@ table {
     width: 95%;
     margin: auto;
     position: initial;
-    margin-top: 100px;
+    margin-top: 120px;
     margin-bottom: 50px;
 }
 
@@ -575,7 +655,7 @@ input[type="button"],
 input[type="submit"],
 input[type="reset"],
 .button {
-
+    width: 100%;
     -webkit-appearance: none;
     position: -webkit-box;
     display: inline-block;
@@ -910,6 +990,7 @@ ol.default li {
 /*********************************************************************************/
 /* Nav                                                                           */
 /*********************************************************************************/
+
 .fa-nav {
     font-size: 1em;
     color: #8c8c8c;
@@ -924,7 +1005,7 @@ ol.default li {
     top: 0;
 
     padding-top: 10px;
-    padding-bottom: 10px;
+    /*padding-bottom:10px; */
 
     width: 100%;
     z-index: 10000;
@@ -945,6 +1026,7 @@ ol.default li {
     color: #fff;
     text-decoration: none;
     outline: 0;
+    padding: 2px 7px 2px 7px;
 }
 
 #nav a:hover {

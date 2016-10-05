@@ -27,11 +27,22 @@
 
 <body>
   <nav id="nav">
-    <ul class="">
+    <ul>
       <a href="/contacts/"><i class="fa-nav fa fa-home" aria-hidden="true"></i></a>
       <a href="/contacts/search"><i class="fa-nav fa fa-search" aria-hidden="true"></i></a>
-      <a href="/contacts/new"><i class="fa-nav fa fa-plus" aria-hidden="true"></i></a>
-      <a href="/contacts/database"><i class="fa-nav fa fa-database" aria-hidden="true"></i></a>
+      <% if user_signed_in? && current_user.rwx_admin? %>
+          <a href="/contacts/new"><i class="fa-nav fa fa-plus" aria-hidden="true"></i></a>
+          <a href="/contacts/database"><i class="fa-nav fa fa-database" aria-hidden="true"></i></a>
+      <% end %>
+
+    </ul>
+
+    <% if user_signed_in? %>
+    <ul style="margin-top:0;">
+      <p style="text-align:right; font-size:.7em;"> Currently signed in as <b><%= current_user.email%></b>&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;
+       <%= link_to('Sign Out',destroy_user_session_path, :id=> "user_session") %>
+      </p>
+      <% end %>
     </ul>
   </nav>
 
