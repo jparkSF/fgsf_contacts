@@ -57,6 +57,7 @@ div#show-body {
     justify-content: center;
     position: absolute;
     margin: auto;
+    margin-top: 50px;
 }
 
 div#show {
@@ -78,14 +79,7 @@ div#show-button {
     justify-content: center;
     bottom: 0;
     /*margin-top: 50px; */
-}
 
-div#show-body {
-    width: 100%;
-    justify-content: center;
-    position: absolute;
-    margin: auto;
-    margin-top: 50px;
 }
 
 div#show-back, #show-edit, #show-delete {
@@ -121,9 +115,13 @@ img {
 /* application */
 
 form#flash_message {
-    margin-top: 90px;
-    margin-left: 60px;
+    padding-top: 75px;
+    padding-left: 60px;
     color: green;
+    position: fixed;
+    background-color: white;
+    z-index: 200;
+    width: 100%;
 }
 
 p#button input {
@@ -145,14 +143,11 @@ header#search-heading {
     text-align: center;
 }
 
-form#flash_message {
-    padding-top: 75px;
-    padding-left: 60px;
-    color: green;
-    position: fixed;
-    background-color: white;
-    z-index: 200;
-    width: 100%;
+form#search-input-home {
+    width: 500px;
+    display: flex;
+    padding-top: 10px;
+
 }
 
 form#search-input-home input[type=text] {
@@ -228,7 +223,7 @@ a#show_button {
 }
 
 div#create_new_form {
-    padding-top: 30px;
+    padding-top: 80px;
     margin-top: 100px;
     margin: auto;
     margin-bottom: 190px;
@@ -245,16 +240,19 @@ div#create_new_form p {
 
 }
 
-div#create_new_form {
-    padding-top: 80px;
-    margin-top: 100px;
+div#main_frame {
     margin: auto;
-    margin-bottom: 190px;
-    width: 100%;
-    font-size: 1.2em;
+    padding-top: 50px;
     position: absolute;
-    padding-left: 25%;
-    padding-right: 25%;
+    width: 100%;
+
+}
+
+div#km_frame {
+    margin: auto;
+    padding-top: 80px;
+    position: absolute;
+    width: 100%;
 
 }
 
@@ -264,38 +262,6 @@ div#search {
     width: 100%;
     position: absolute;
 
-}
-
-div#search-home {
-    margin: 28px;
-    margin: auto;
-    width: 100%;
-    position: absolute;
-
-}
-
-div#message {
-    margin-top: 5px;
-    margin-bottom: 8px;
-    margin-left: 50px;
-}
-
-table {
-
-    margin: 0;
-    position: fixed;
-    width: 100%;
-    margin-bottom: 50px;
-}
-
-table td#show_key {
-    font-size: 1.5em;
-    font-weight: bold;
-    height: 35px;
-}
-
-td#show_value {
-    font-size: 1.5em;
 }
 
 div#search-home {
@@ -988,7 +954,6 @@ ol.default li {
 /*********************************************************************************/
 /* Nav                                                                           */
 /*********************************************************************************/
-
 .fa-nav {
     font-size: 1em;
     color: #8c8c8c;
