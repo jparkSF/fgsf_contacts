@@ -2,9 +2,9 @@ class ContactsController < ApplicationController
 
   ACCEPTED_EXTENSIONS = %w(.xlsx .xls .csv).freeze
 
+  before_action :authenticate_user!
   before_action :check_admin!, except: [:search]
   before_action :check_accessibility!, except: [:index, :show, :search]
-  before_action :authenticate_user!
 
   def index
     initialize_all_contacts

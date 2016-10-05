@@ -9,11 +9,6 @@ class User < ActiveRecord::Base
   def r_admin?
     user_role.try(:admin_r_access?) || user_role.try(:admin_rw_access?) || user_role.try(:admin_rwx_access?)
   end
-=begin
-  def rw_admin?
-    user_role.try(:admin_rw_access?) || user_role.try(:admin_rwx_access?)
-  end
-=end
 
   def rwx_admin?
     user_role.try(:admin_rwx_access?)
