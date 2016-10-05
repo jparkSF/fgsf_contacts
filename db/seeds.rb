@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'csv'
 
 def create_role(contact, role, leader)
@@ -6,7 +7,7 @@ def create_role(contact, role, leader)
 end
 
 csv_text = File.read('db/feed.csv')
-csv = CSV.parse(csv_text, :headers => true)
+csv = CSV.parse(csv_text, headers: true)
 csv.each do |row|
   # {"group_name"=>"4", "name"=>"김용현", "gender"=>"male"}
   hash = row.to_hash

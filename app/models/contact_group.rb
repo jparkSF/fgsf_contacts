@@ -1,15 +1,16 @@
+# frozen_string_literal: true
 class ContactGroup < ActiveRecord::Base
   has_many :contacts, primary_key: :contact_id, foreign_key: :id
 
   GROUP_NAMES = %w(1 2 3 4 5 6 7).freeze
-  KM = 'KM'.freeze
+  KM = 'KM'
   GROUP_TYPES = [KM].freeze
 
   validates :group_name, inclusion: { in: GROUP_NAMES, message: '%{value} is not a group.' }, allow_nil: true
   validates :group_type, inclusion: { in: GROUP_TYPES, message: '%{value} is not a type.' }, allow_nil: true
 
   def contacts
-    contact_ids = ContactGroup.where(group_name: self.group_name).pluck(:contact_id)
+    contact_ids = ContactGroup.where(group_name: group_name).pluck(:contact_id)
     Contact.where(id: contact_ids)
   end
 

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class AddAttachmentImageToContacts < ActiveRecord::Migration
   def self.up
     change_table :contacts do |t|
