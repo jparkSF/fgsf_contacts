@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class AddContactGroup < ActiveRecord::Migration
   def change
     add_column :contacts, :gender, :string

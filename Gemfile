@@ -1,5 +1,5 @@
+# frozen_string_literal: true
 source 'https://rubygems.org'
-
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
@@ -26,14 +26,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'activeresource', require: 'active_resource'
 gem 'responders', '~> 2.0'
 gem 'axlsx', '~> 2.0'
-gem "axlsx_rails"
+gem 'axlsx_rails'
 gem 'roo'
-gem "iconv", "~> 1.0.3"
+gem 'iconv', '~> 1.0.3'
 gem 'paperclip', '~> 5.0.0'
 gem 'mysql2'
 gem 'devise', '~> 4.2'
-
-
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -55,4 +53,7 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  # Style checker
+  gem 'rubocop', '~> 0.43.0', require: false
 end

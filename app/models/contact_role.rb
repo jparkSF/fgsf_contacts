@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class ContactRole < ActiveRecord::Base
   ROLES = %w(Leadership Praise Media Welcoming).freeze
 
@@ -5,8 +6,8 @@ class ContactRole < ActiveRecord::Base
     'Leadership' => '리더팀',
     'Praise' => '찬양팀',
     'Media' => '방송팀',
-    'Welcoming' => '새가족팀',
-  }
+    'Welcoming' => '새가족팀'
+  }.freeze
 
   validates :role_name, inclusion: { in: ROLES, message: '%{value} is not a role.' }
 

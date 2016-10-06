@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class KmController < ApplicationController
   def index
     @groups = ContactGroup.contact_groups(ContactGroup::KM)
