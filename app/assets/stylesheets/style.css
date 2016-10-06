@@ -7,9 +7,10 @@
 /*********************************************************************************/
 
 div.user_form {
-    padding-top: 180px;
-    width: 400px;
-    margin: auto;
+    padding: 180px 30% 0 30%;
+    width: 100%;
+    position: absolute;
+    margin: 0 auto;
 }
 
 p#download {
@@ -1069,6 +1070,12 @@ ol.default li {
         padding-left: 25%;
         padding-right: 25%;
     }
+    div.user_form {
+        padding: 180px 30% 0 30%;
+        width: 100%;
+        position: absolute;
+        margin: 0 auto;
+    }
 }
 
 @media only screen and (min-width: 801px) and (max-width: 959px) {
@@ -1079,6 +1086,12 @@ ol.default li {
 
     table#home td#address, td#email, td#other_1, td#other_2, td#other_3 {
         display: none;
+    }
+    div.user_form {
+        padding: 180px 30% 0 30%;
+        width: 100%;
+        position: absolute;
+        margin: 0 auto;
     }
 
     div#create_new_form {
@@ -1097,11 +1110,19 @@ ol.default li {
     table#home td#address, td#email, td#other_1, td#other_2, td#other_3, td#sun_kyo {
         display: none;
     }
+    div.user_form {
+        padding: 180px 30% 0 30%;
+        width: 100%;
+        position: absolute;
+        margin: 0 auto;
+    }
+
 
     div#create_new_form {
         padding-left: 20%;
         padding-right: 20%;
     }
+
 }
 
 @media only screen and (min-width: 656px) and (max-width: 767px) {
@@ -1116,6 +1137,12 @@ ol.default li {
 
     table#home td#position, td#sa_yeok, td#mok_jang, td#sun_kyo, td#email, td#address, td#other_1, td#other_2, td#other_3 {
         display: none;
+    }
+    div.user_form {
+        padding: 180px 20% 0 20%;
+        width: 100%;
+        position: absolute;
+        margin: 0 auto;
     }
 
     /* contacts/search */
@@ -1210,6 +1237,12 @@ ol.default li {
     table#home td#position, td#sa_yeok, td#mok_jang, td#sun_kyo, td#email, td#address, td#other_1, td#other_2, td#other_3 {
         display: none;
     }
+    div.user_form {
+        padding: 180px 20% 0 20%;
+        width: 100%;
+        position: absolute;
+        margin: 0 auto;
+    }
 
     /* contacts/search */
     form#search-input {
@@ -1301,6 +1334,12 @@ ol.default li {
     table#home td#position, td#sa_yeok, td#mok_jang, td#sun_kyo, td#email, td#address, td#other_1, td#other_2, td#other_3 {
         display: none;
     }
+    div.user_form {
+        padding: 180px 20% 0 20%;
+        width: 100%;
+        position: absolute;
+        margin: 0 auto;
+    }
 
     /* contacts/search */
     form#search-input {
@@ -1391,7 +1430,12 @@ ol.default li {
     table#home td#position, td#sa_yeok, td#mok_jang, td#sun_kyo, td#email, td#address, td#other_1, td#other_2, td#other_3 {
         display: none;
     }
-
+    div.user_form {
+        padding: 180px 20% 0 20%;
+        width: 100%;
+        position: absolute;
+        margin: 0 auto;
+    }
     /* contacts/search */
     form#search-input {
         width: 350px;
@@ -1485,6 +1529,13 @@ ol.default li {
     table#home td#position, td#sa_yeok, td#mok_jang, td#sun_kyo, td#email, td#address, td#other_1, td#other_2, td#other_3 {
         display: none;
     }
+    div.user_form {
+        padding: 180px 15% 0 15%;
+        width: 100%;
+        position: absolute;
+        margin: 0 auto;
+    }
+
 
     /* contacts/search */
     form#search-input {
@@ -1576,6 +1627,13 @@ ol.default li {
         display: none;
     }
 
+    div.user_form {
+        padding: 180px 15% 0 15%;
+        width: 100%;
+        position: absolute;
+        margin: 0 auto;
+    }
+
     /* contacts/search */
     form#search-input {
         width: 350px;
@@ -1658,6 +1716,13 @@ ol.default li {
     nav {
         font-size: .75em;
     }
+    div.user_form {
+        padding: 180px 15% 0 15%;
+        width: 100%;
+        position: absolute;
+        margin: 0 auto;
+    }
+
 
     /***********************************************/
     form#search-input-home {
