@@ -7,7 +7,7 @@ Access to URL endpoints are protected behind admin roles.
 Link to[Github project](https://github.com/jparkSF/fgsf_contacts) for fgsf_contacts
 
     Ruby version: 2.3.1
-    Ruby on Rails version: 4.2.6
+    Ruby on Rails version: 5.0.0.1
 
 ###Prerequisite
 1) Install RVM
